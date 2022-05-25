@@ -1,0 +1,15 @@
+---
+title: "Prepare data"
+author: "Stefano Coretta"
+format: html
+editor: visual
+---
+
+## Attach packages
+
+```{r pkgs}
+library(here)
+library(tidyverse)
+```
+
+## Glottolog data
