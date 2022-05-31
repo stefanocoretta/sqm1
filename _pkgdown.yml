@@ -1,4 +1,14 @@
-url: ~
+url: https://stefanocoretta.github.io/sqmf/
 template:
   bootstrap: 5
-
+  bootswatch: flatly
+navbar:
+  structure:
+    left: [home, info, reference]
+    right: [github]
+  components:
+    info:
+      text: Course info
+      menu:
+      - text: Course syllabus
+        href: articles/syllabus.html
