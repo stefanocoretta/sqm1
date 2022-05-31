@@ -651,6 +651,19 @@
       "Hash": "f3aefccc1cc50de6338146b62f115de8",
       "Requirements": []
     },
+    "glottologR": {
+      "Package": "glottologR",
+      "Version": "0.1.0.9000",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "stefanocoretta",
+      "RemoteRepo": "glottologR",
+      "RemoteRef": "main",
+      "RemoteSha": "4ed3765bdd1efbd4a446251576fc8a0df0eb8742",
+      "Hash": "1f0ac6c01751444a08ad531af741dbe8",
+      "Requirements": []
+    },
     "glue": {
       "Package": "glue",
       "Version": "1.6.2",
