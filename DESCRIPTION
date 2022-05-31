@@ -19,3 +19,7 @@ Imports:
     glottologR
 Remotes:
     stefanocoretta/glottologR
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
