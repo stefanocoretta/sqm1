@@ -13,3 +13,39 @@ library(tidyverse)
 ```
 
 ## Glottolog data
+
+The Glottolog data is available in the \[glottologR\](https://github.com/stefanocoretta/glottologR) package.
+
+## Politeness
+
+```{r}
+polite <- read_csv("https://raw.githubusercontent.com/learnB4SS/learnB4SS/main/data-raw/polite.csv") %>%
+  arrange(index) %>%
+  select(-index, -years_in_ger)
+
+usethis::use_data(polite, overwrite = TRUE)
+```
+
+## Vowel formants
+
+```{r}
+f12 <- read_csv("https://raw.githubusercontent.com/stefanocoretta/coretta2018itapol/master/data-raw/aggregated/formants-series.csv") %>%
+  select(everything(), gender = sex)
+
+usethis::use_data(f12, overwrite = TRUE)
+```
+
+## Emotional Valence
+
+```{r}
+set.seed(74201)
+emotion <- read_csv("https://osf.io/u47fk/download") %>%
+  mutate(
+    valence = Val - 5,
+    valence_z = as.numeric(scale(Val))
+  ) %>%
+  sample_n(1000, weight = pnorm(valence_z)) %>%
+  select(word = Word, valence)
+
+usethis::use_data(emotion, overwrite = TRUE)
+```
