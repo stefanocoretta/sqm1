@@ -62,3 +62,37 @@ gael_morph <- read_csv("https://osf.io/download/h2vub/")
 usethis::use_data(gael_morph, overwrite = TRUE)
 ```
 
+## Massive Auditory Lexical Decision 1.1
+
+```{r}
+download.file(
+  "https://era.library.ualberta.ca/items/3344343b-2b4a-4b8c-af8e-8bd829c76472/view/eada02c5-6259-4225-8204-13ce86e1cd2d/MALD1_1_AllData.Rda",
+  here("./data-raw/MALD1_1_AllData.Rda")
+)
+
+load(here("./data-raw/MALD1_1_AllData.Rda"))
+set.seed(943874)
+
+subj <- sample(unique(dat$Subject), 50)
+
+mald_1_1 <- dat %>%
+  filter(Subject %in% subj, RT > 0) %>%
+  select(Subject, Item, IsWord, PhonLev, RT, ACC) %>%
+  mutate(
+    IsWord = factor(IsWord, levels = c("TRUE", "FALSE")),
+    RT_log = log(RT)
+  ) %>%
+  group_by(Subject) %>%
+  slice_sample(n = 100) %>%
+  ungroup()
+
+usethis::use_data(mald_1_1, overwrite = TRUE)
+```
+
+
+## 'Everywhere here can say this': The English locative impersonal
+
+```{r}
+everywhere_loc <- read_csv("https://osf.io/download/vaujp/?view_only=edba6a2255044ce6af6a519b85c9e65f")
+```
+

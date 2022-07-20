@@ -104,3 +104,21 @@
 #'   the Linguistic Survey of Scotland*. OSF.
 #'   [osf.io/4bp2y](https://osf.io/4bp2y).
 "gael_morph"
+
+#' Massive Auditory Lexical Decision 1.1
+#'
+#'
+#'
+#' @format A [tibble::tibble] with 5000 rows and 7 variables:
+#'   \describe{
+#'     \item{Subject}{Subject unique identifier.}
+#'     \item{Item}{Word.}
+#'     \item{IsWord}{Whether it is a real word or a nonce word.}
+#'     \item{PhonLev}{Phoneme Levenstein Distance.}
+#'     \item{RT}{Reaction times (ms).}
+#'     \item{ACC}{Accuracy of lexical decision.}
+#'     \item{RT_log}{Logged reaction times.}
+#'   }
+#'
+#' @source Tucker, Benjamin V. 2021. Massive Auditory Lexical Decision 1.1. DOI: https://doi.org/10.7939/r3-kh0r-r116.
+"mald_1_1"
