@@ -101,7 +101,10 @@ usethis::use_data(everywhere_loc, overwrite = TRUE)
 ## A Cross-Cultural Analysis of Early Prelinguistic Gesture Development and Its Relationship to Language Development
 
 ```{r}
-gestures <- read_csv("https://raw.githubusercontent.com/stefanocoretta/infant-gestures/master/data/gestures.csv")
+gestures <- read_csv("https://raw.githubusercontent.com/stefanocoretta/infant-gestures/master/data/gestures.csv") %>%
+  mutate(
+    id = as.numeric(as.factor(paste(dyad, task, gesture)))
+  )
 
 usethis::use_data(gestures, overwrite = TRUE)
 ```
