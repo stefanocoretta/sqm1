@@ -122,3 +122,16 @@
 #'
 #' @source Tucker, Benjamin V. 2021. Massive Auditory Lexical Decision 1.1. DOI: https://doi.org/10.7939/r3-kh0r-r116.
 "mald_1_1"
+
+#' 'Everywhere here can say this': The English locative impersonal
+#'
+#'
+#'
+#' @format A [tibble::tibble] with 5000 rows and 7 variables:
+#'   \describe{
+#'     \item{Subject}{Subject unique identifier.}
+#'     \item{Item}{Word.}
+#'   }
+#'
+#' @source Sluckin, Benjamin L. and Itamar Kastner. 2022. 'Everywhere here can say this': The English locative impersonal. LingBuzz. https://ling.auf.net/lingbuzz/006708
+"everywhere_loc"

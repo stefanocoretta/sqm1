@@ -93,6 +93,9 @@ usethis::use_data(mald_1_1, overwrite = TRUE)
 ## 'Everywhere here can say this': The English locative impersonal
 
 ```{r}
-everywhere_loc <- read_csv("https://osf.io/download/vaujp/?view_only=edba6a2255044ce6af6a519b85c9e65f")
+everywhere_loc <- read_csv("https://osf.io/download/vaujp/?view_only=edba6a2255044ce6af6a519b85c9e65f") %>%
+  select(-(Simple:Pass))
+
+usethis::use_data(everywhere_loc, overwrite = TRUE)
 ```
 
