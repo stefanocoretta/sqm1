@@ -29,10 +29,10 @@ usethis::use_data(polite, overwrite = TRUE)
 ## Vowel formants
 
 ```{r}
-f12 <- read_csv("https://raw.githubusercontent.com/stefanocoretta/coretta2018itapol/master/data-raw/aggregated/formants-series.csv") %>%
+f_ita_pol <- read_csv("https://raw.githubusercontent.com/stefanocoretta/coretta2018itapol/master/data-raw/aggregated/formants-series.csv") %>%
   select(everything(), gender = sex)
 
-usethis::use_data(f12, overwrite = TRUE)
+usethis::use_data(f_ita_pol, overwrite = TRUE)
 ```
 
 ## Emotional Valence
@@ -49,3 +49,16 @@ emotion <- read_csv("https://osf.io/u47fk/download") %>%
 
 usethis::use_data(emotion, overwrite = TRUE)
 ```
+
+## Morphology and dialectology in the Linguistic Survey of Scotland
+
+The [Morphology and dialectology in the Linguistic Survey of Scotland](https://osf.io/4bp2y) contains a portion of the morphological questionnaire returns collected for the Linguistic Survey of Scotland (Gaelic). The data have been transcribed and coded from questionnaire slips by Will Lamb.
+
+Iosad, Pavel & William Lamb. 2020. *Morphology and dialectology in the Linguistic Survey of Scotland*. OSF. [osf.io/4bp2y](https://osf.io/4bp2y).
+
+```{r}
+gael_morph <- read_csv("https://osf.io/download/h2vub/")
+
+usethis::use_data(gael_morph, overwrite = TRUE)
+```
+

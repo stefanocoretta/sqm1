@@ -85,3 +85,22 @@
 #'     research methods, 45(4), 1191–1207.
 #'     https://doi.org/10.3758/s13428-012-0314-x
 "emotion"
+
+#' Morphology and dialectology in the Linguistic Survey of Scotland
+#'
+#' The [Morphology and dialectology in the Linguistic Survey of
+#' Scotland](https://osf.io/4bp2y) contains a portion of the morphological
+#' questionnaire returns collected for the Linguistic Survey of Scotland
+#' (Gaelic). The data have been transcribed and coded from questionnaire slips
+#' by Will Lamb.
+#'
+#' @format A [tibble::tibble] with 201 rows and 74 variables:
+#'   \describe{
+#'     \item{sgds_point}{SGDS point.}
+#'     \item{id}{Unique identifier.}
+#'   }
+#'
+#' @source Iosad, Pavel & William Lamb. 2020. *Morphology and dialectology in
+#'   the Linguistic Survey of Scotland*. OSF.
+#'   [osf.io/4bp2y](https://osf.io/4bp2y).
+"gael_morph"
