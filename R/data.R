@@ -135,3 +135,16 @@
 #'
 #' @source Sluckin, Benjamin L. and Itamar Kastner. 2022. 'Everywhere here can say this': The English locative impersonal. LingBuzz. https://ling.auf.net/lingbuzz/006708
 "everywhere_loc"
+
+#' A Cross-Cultural Analysis of Early Prelinguistic Gesture Development and Its Relationship to Language Development
+#'
+#'
+#'
+#' @format A [tibble::tibble] with 5000 rows and 7 variables:
+#'   \describe{
+#'     \item{Subject}{Subject unique identifier.}
+#'     \item{Item}{Word.}
+#'   }
+#'
+#' @source Thea Cameron-Faulkner, Nivedita Malik, Circle Steele, Stefano Coretta, Ludovica Serratrice, Elena Lieven. 2020. A cross cultural analysis of early prelinguistic gesture development and its relationship to language development. Child Development 92:1. 273-290. DOI: https://doi.org/10.1111/cdev.13406
+"gestures"

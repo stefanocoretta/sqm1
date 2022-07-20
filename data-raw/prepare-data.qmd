@@ -89,7 +89,6 @@ mald_1_1 <- dat %>%
 usethis::use_data(mald_1_1, overwrite = TRUE)
 ```
 
-
 ## 'Everywhere here can say this': The English locative impersonal
 
 ```{r}
@@ -97,5 +96,13 @@ everywhere_loc <- read_csv("https://osf.io/download/vaujp/?view_only=edba6a22550
   select(-(Simple:Pass))
 
 usethis::use_data(everywhere_loc, overwrite = TRUE)
+```
+
+## A Cross-Cultural Analysis of Early Prelinguistic Gesture Development and Its Relationship to Language Development
+
+```{r}
+gestures <- read_csv("https://raw.githubusercontent.com/stefanocoretta/infant-gestures/master/data/gestures.csv")
+
+usethis::use_data(gestures, overwrite = TRUE)
 ```
 
