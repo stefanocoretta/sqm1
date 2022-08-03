@@ -35,6 +35,13 @@ f_ita_pol <- read_csv("https://raw.githubusercontent.com/stefanocoretta/coretta2
 usethis::use_data(f_ita_pol, overwrite = TRUE)
 ```
 
+```{r}
+dur_ita_pol <- read_csv("https://raw.githubusercontent.com/stefanocoretta/coretta2018itapol/master/data-raw/aggregated/token-measures.csv") %>%
+  select(everything(), gender = sex)
+
+usethis::use_data(dur_ita_pol, overwrite = TRUE)
+```
+
 ## Emotional Valence
 
 ```{r}
@@ -108,4 +115,3 @@ gestures <- read_csv("https://raw.githubusercontent.com/stefanocoretta/infant-ge
 
 usethis::use_data(gestures, overwrite = TRUE)
 ```
-

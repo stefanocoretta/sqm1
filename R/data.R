@@ -71,6 +71,70 @@
 #' }
 "f_ita_pol"
 
+#' Acousics and articulatory durational measures of Italian and Polish
+#'
+#' A dataset with measures from acoustics and articulatory data of Italian and Polish.
+#' The dataset contains durational measures of segments, voicing, and tongue gestures.
+#'
+#' @docType data
+#' @format A tibble with 1343 observations and 52 variables.
+#' \describe{
+#'   \item{`index`}{observation number within speaker}
+#'   \item{`speaker`}{speaker's ID}
+#'   \item{`file`}{audio chunk file name}
+#'   \item{`rec_date`}{date and time of recording}
+#'   \item{`ipu`}{SPPAS IPU index}
+#'   \item{`prompt`}{sentence stimulys}
+#'   \item{`word`}{word stimulus}
+#'   \item{`time`}{(s) time of the sentence onset within the concatenated audio file}
+#'   \item{`sentence_ons`}{(s) onset time of the sentence}
+#'   \item{`sentence_off`}{(s) offset time of the sentence}
+#'   \item{`word_ons`}{(s) onset time of the target word}
+#'   \item{`word_off`}{(s) offsett time of the target word (= C1 onset)}
+#'   \item{`v1_ons`}{(s) onset time of V1 (= C1 offset)}
+#'   \item{`c2_ons`}{(s) onset time of C2 (= V1 offset)}
+#'   \item{`v2_ons`}{(s) onset time of V2 (= C2 offset)}
+#'   \item{`c1_rel`}{(s) time of C1 release}
+#'   \item{`c2_rel`}{(s) time of C2 release}
+#'   \item{`voicing_start`}{(s) time of voicing onset}
+#'   \item{`voicing_end`}{(s) time of voicing offset}
+#'   \item{`voicing_duration`}{(ms) duration of voiced interval}
+#'   \item{`voiced_points`}{number of points out of 5 within the first half of C1 closure in which voicing is present}
+#'   \item{`GONS`}{(s) onset of C1 closing gesture}
+#'   \item{`max`}{(s) time of maximum displacement of C1 closing gesture}
+#'   \item{`NOFF`}{(s) offset of C1 gesture nucleus}
+#'   \item{`NONS`}{(s) onset of C1 gesture nucleus}
+#'   \item{`peak1`}{(s) first tongue velocity peak}
+#'   \item{`peak2`}{(s) second tongue velocity peak}
+#'   \item{`c1_duration`}{(ms) duration of C1}
+#'   \item{`c1_clos_duration`}{(ms) duration of C1 closure}
+#'   \item{`c1_vot`}{(ms) C1 Voice Onset Time}
+#'   \item{`c1_rvofft`}{(ms) C1 release to V1 offset time}
+#'   \item{`v1_duration`}{(ms) duration of V1}
+#'   \item{`c1_duration`}{(ms) duration of C1}
+#'   \item{`c2_clos_duration`}{(ms) duration of C2 closure}
+#'   \item{`v2_duration`}{(ms) duration of V2}
+#'   \item{`v_v`}{(ms) V1 onset to V2 onset (Vowel-to-Vowel) duration}
+#'   \item{`word_duration`}{(ms) duration of the word}
+#'   \item{`sentence_duration`}{(s) duration of sentence}
+#'   \item{`language`}{speaker's native language (`Italian`, `Polish`)}
+#'   \item{`gender`}{speaker's sex (`f`, `m`)}
+#'   \item{`glottocode`}{language Glottocode}
+#'   \item{`item`}{word ID number}
+#'   \item{`ipa`}{IPA transcription of the word}
+#'   \item{`c1`}{first consonant (C1)}
+#'   \item{`c1_phonation`}{voicing of C1 (`voiceless`, `voiced`)}
+#'   \item{`vowel`}{V1 and V2 (`a`, `o`, `u`)}
+#'   \item{`anteropost`}{backness of the vowel (`back`, `central`)}
+#'   \item{`height`}{height of the vowel (`high`, `mid`, `low`)}
+#'   \item{`c2`}{second consonant (C2)}
+#'   \item{`c2_phonation`}{voicing of C2 (`voiceless` or `voiced`)}
+#'   \item{`c2_place`}{place of C2 (`coronal`, `velar`)}
+#'   \item{`speech_rate`}{speech rate as syllables per second}
+#'   \item{`speech_rate_c`}{centered speech rate as syllables per second}
+#' }
+"dur_ita_pol"
+
 #' Word emotional valence
 #'
 #' This tibble contains data from Warriner 2013.
