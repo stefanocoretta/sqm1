@@ -88,7 +88,7 @@ mald_1_1 <- dat %>%
   mutate(
     IsWord = factor(IsWord, levels = c("TRUE", "FALSE")),
     ACC = ifelse(ACC, "correct", "incorrect"),
-    ACC = factor(ACC, levels = c("correct", "incorrect")),
+    ACC = factor(ACC, levels = c("incorrect", "correct")),
     RT_log = log(RT)
   ) %>%
   group_by(Subject) %>%
