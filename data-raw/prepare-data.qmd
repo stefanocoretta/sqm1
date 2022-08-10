@@ -36,8 +36,13 @@ usethis::use_data(f_ita_pol, overwrite = TRUE)
 ```
 
 ```{r}
+f_mid <- f_ita_pol %>%
+  filter(time == 5) %>%
+  select(-time)
+
 dur_ita_pol <- read_csv("https://raw.githubusercontent.com/stefanocoretta/coretta2018itapol/master/data-raw/aggregated/token-measures.csv") %>%
-  select(everything(), gender = sex)
+  select(everything(), gender = sex) %>%
+  left_join(y = f_mid)
 
 usethis::use_data(dur_ita_pol, overwrite = TRUE)
 ```
