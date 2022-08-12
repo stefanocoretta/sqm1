@@ -1,17 +1,12 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# sqmf
+# Statistics and Quantitative Methods (Semester 1)
 
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of sqmf is to …
+Welcome to the main site of the course *Statistics and Quantitative
+Methods* (Semester 1).
 
-## Installation
-
-You can install the development version of sqmf like so:
-
-``` r
-# FILL THIS IN! HOW CAN PEOPLE INSTALL YOUR DEV PACKAGE?
-```
+This will be your go-to place throughout the semester.
