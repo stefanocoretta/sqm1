@@ -1,0 +1,202 @@
+---
+title: "Learning objectives"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Learning objectives}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Overview
+
+This course is an introduction to **study design and quantitative data analysis**, including statistics, as commonly employed in linguistics, using the R software.
+
+We will cover the following topics:
+
+- The **basics** of quantitative data analysis.
+- **Study design**.
+- The principles of **data visualisation**.
+- **Statistical modelling**.
+- Statistical inference using **Null Hypothesis Significance Testing**.
+
+Examples from different branches of linguistics will be used to provide you with hands-on experience in quantitative data analysis and Open Research practices.
+
+At completion of the course you will have gained the following skills:
+
+- Effectively address the intended research questions with quantitative methods.
+- Using compelling visualisations to communicate a specific message about patterns in the data.
+- Master linear models for different types of data (continuous measures, counts, accuracy data, reaction times).
+- Correctly interpret *p*-values and confidence intervals and avoid common interpretation pitfalls.
+
+## Weekly breakdown
+
+The following sections report the learning objectives more in detail, broken down by week.
+
+For each week, you can find a set of **questions** that you should be able to answer at the end of the week and a set of **skills** that you will practice during the week.
+
+## Week 1: Quantitative methods and uncertainty
+
+### Questions:
+
+- What are knowledge and data?
+- What is quantitative data analysis?
+- How can we talk about uncertainty?
+- Which are the limits of quantitative methods?
+
+### Skills:
+
+- Think critically about "data".
+- Interpret basic numeric summaries and plots.
+- Use R to perform simple calculations and obtain numeric summaries.
+- Master the basics of the programming language R Learn how to manage your analyses with scripts and RStudio.
+
+## Week 2: Data visualisation
+
+### Questions:
+
+- What are the principles of good data visualisation?
+- Which are the main components of a plot?
+- Which are the appropriate plots for different types of data?
+- How can we visualise uncertainty?
+
+### Skills:
+
+- Create common types of plots with ggplot2.
+- Use colour and shape to effectively convey meaning.
+- Describe a plot in writing and comment on observable patterns.
+- Write dynamic reports and generate publication-quality image files.
+
+## Week 3: Linear models: Basics I
+
+### Questions:
+
+- What are statistical models useful for?
+- What are statistical populations, samples and distributions?
+- What are statistical variables and which type of relationships exist between variables?
+- What is a linear model and which are its components?
+
+### Skills:
+
+- Perform basic data wrangling in R (filtering and mutating data).
+- Fit a linear model with one continuous outcome variable and one continuous predictor with lm().
+- Interpret the summary of the model and understand the meaning of the reported coefficients.
+- Plot and diagnose the model and describe the model specification and results in writing.
+
+## Week 4: Linear models: Basics II
+
+### Questions:
+
+- How can we use linear models with categorical (rather than continuous) predictors?
+- Why do we need to code categorical predictors as numbers?
+- And which are the most common coding methods?
+- How can we represent a linear model using a formula?
+- How do you interpret a linear model with both continuous and categorical predictors?
+
+### Skills:
+
+- Read data into R and obtain grouped summaries.
+- Master contrast coding in R for categorical predictors.
+- Fit, interpret and plot linear models with continuous and categorical predictors.
+- Advanced reporting of model specification and results.
+
+## Week 5: Linear models: Discrete outcomes
+
+### Questions:
+
+- Is Gaussian data that common?
+- How can we model non-Gaussian data?
+- Which are the properties of binary outcomes ('yes/no', 'true/false') and counts?
+- Why do linear models use log-odds and odds instead of probabilities?
+
+### Skills:
+
+- Fit, interpret and plot linear models with binary outcome variables, using the Bernoulli/binomial distribution family.
+- Fit, interpret and plot linear models with count outcome variables, using the Poisson distribution family.
+- Convert between log-odds, odds and probabilities.
+- Recognise different types of outcome variables.
+
+## Week 6: Catch-up Week
+
+There will be no class this week.
+Instead, you will be asked to catch up with the materials covered that far, complete a short formative assessments, and participate in class discussions on Piazza.
+
+## Week 7: Linear models: Basics III
+
+### Questions:
+
+- What makes data "tidy"?
+- And what makes it "untidy"?
+- Why is centering and/or scaling continuous variables helpful?
+- What are z-scores?
+- How do you model interactions between two or more variables?
+
+### Skills:
+
+- Tidy messy data in R with dplyr and tidyr.
+- Centre, scale and z-score continuous predictors.
+- Fit, interpret and plot linear models with interactions (continuous \* continuous, continuous \* categorical, categorical \* categorical).
+- Reporting of models with interactions.
+
+## Week 8: Linear models: Hierarchical data
+
+### Questions:
+
+- What makes data hierarchical?
+- Can we pool information from different groups in the data?
+- How are fixed and varying effects related to pooling?
+- What is shrinkage and when is it useful?
+
+### Skills:
+
+- Fit, interpret and plot a linear model with varying effects using lmer().
+- Understand varying intercepts and slopes as variance coefficients.
+- Deal with model convergence and singularity issues.
+- Report models with varying effects.
+
+## Week 9: Significance Testing I
+
+### Questions:
+
+- What is statistical inference?
+- What is Null Hypothesis Significance Testing?
+- What are p-values?
+- What are they not?
+- Are p-values a guarantee of "truth"?
+
+### Skills:
+
+- Define the statistical population and sample.
+- Obtain and interpret p-values.
+- Recognise and avoid common misconceptions of p-values.
+- Report p-values.
+
+## Week 10: Significance testing II
+
+### Questions:
+
+- How much are we willing to risk getting a false positive result?
+- What is statistical power and how is it related to false negative results?
+- What are Questionable Research Practices (QRP) and how do we avoid them?
+- Why is it important to know the required minimal sample size?
+
+### Skills:
+
+- Understand alpha, beta and statistical power.
+- Understand Type-I, II, M and S errors.
+- Master Open Research practices and prevent QRPs.
+- Run power analyses with simr to calculate the required minimal sample size.
+
+
+
+
+<br>
+<br>
+<br>
+<br>

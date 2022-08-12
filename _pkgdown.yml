@@ -10,5 +10,7 @@ navbar:
     info:
       text: Course info
       menu:
-      - text: Course syllabus
+      - text: Syllabus
         href: articles/syllabus.html
+      - text: Learning objectives
+        href: articles/objectives.html
