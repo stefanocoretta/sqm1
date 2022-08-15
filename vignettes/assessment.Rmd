@@ -1,0 +1,74 @@
+---
+title: "Assessment"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Assessment}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Overview
+
+This course will be assessed on the basis of a **set of formative assessments** and **one summative assessment**.
+
+**Formative assessments** are assessments for which you might receive feedback on, but which will not be marked.
+These will give you a chance to keep on track with the course contents and get interim feedback that will better prepare you for the summative assessment.
+
+You will have to submit one **summative assessment**. This assessment will be marked and that will be your final mark.
+
+- **Summative assessment (SA1)**: Data viz and modelling report
+  - 100% of final mark.
+  - No word limit.
+  - Data released in Week 9.
+  - **Due date: Thursday 8 December 2022 at noon (Week 12).**
+
+See below for details.
+
+## Formative assessments
+
+There are **9 formative assessments**.
+These are optional but we strongly recommend you to complete as many as you can so that you can keep up with the materials and receive interim feedback.
+
+These are divided between **assessments due on Mondays (FM)** and **assessments due on Thursdays (FT)**.
+The retrieving syllabus (RS) is due every week on Monday.
+
+- **Formative assessments due on Mondays**
+  - RS (every week): Retrieving syllabus.
+  - FM1 (Week 2): Positionality statement (one paragraph).
+  - FM2 (Week 3): Grammar of graphics analysis.
+  - FM3 (Week 4): What are the consequences of realism vs antirealism on quantitative research? (one paragraph).
+  - FM4 (Week 6): Interface between Gelman's "virtues" and Gibbon's "social contract" (one paragraph).
+- **Formative assessments due on Thursdays**
+  - FT1 (Week 3): Data viz.
+  - FT2 (Week 5): Linear model report.
+  - FT3 (Week 7): Data wrangle + simple modelling.
+  - FT4 (Week 9): Modelling.
+
+If you feel that all 9 formative assessments are too much, then you can choose to submit only the Thursday's formative assessments.
+
+## Summative assessment
+
+```{=html}
+<div class="alert alert-warning" role="alert">
+  Submission deadline: Thursday 8 December at noon
+</div>
+```
+
+There is only one summative assessment for this course.
+
+You will be given a data set and you will have to:
+
+- **Read and wrangle** the data.
+- Produce a series of **plots and comment on them**.
+- **Conduct and report statistical models** to answer a couple of research questions.
+
+You will submit this assessment in the form of a lab report.
+
+More information will be released soon.

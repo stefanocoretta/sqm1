@@ -2,7 +2,7 @@
 title: "Syllabus"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Course syllabus}
+  %\VignetteIndexEntry{Syllabus}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
