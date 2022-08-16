@@ -122,3 +122,17 @@ gestures <- read_csv("https://raw.githubusercontent.com/stefanocoretta/infant-ge
 
 usethis::use_data(gestures, overwrite = TRUE)
 ```
+
+## Shallow morphological parsing
+
+```{r}
+shallow <- read_csv("https://raw.githubusercontent.com/stefanocoretta/quick-linear-models/main/04-fit-models/shallow-morph.csv") %>%
+  filter(Critical_Filler == "Critical") %>%
+  mutate(
+    Relation_type = factor(Relation_type, levels = c("Unrelated", "Constituent", "NonConstituent")),
+    accuracy = ifelse(ACC == 0, "incorrect", "correct")
+  ) %>%
+  select(-ACC, RT_log = logRT)
+
+usethis::use_data(shallow, overwrite = TRUE)
+```
