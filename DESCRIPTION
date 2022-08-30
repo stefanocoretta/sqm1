@@ -21,7 +21,8 @@ Remotes:
 Suggests: 
     knitr,
     rmarkdown,
-    glottologR
+    glottologR,
+    learnr
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)
