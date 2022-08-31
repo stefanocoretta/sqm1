@@ -1,10 +1,11 @@
 ---
-title: "01 R basics"
+title: "SQM 01 - R basics"
 output: 
   learnr::tutorial:
     progressive: true
     allow_skip: true
 runtime: shiny_prerendered
+description: "Statistics and Quantitative Methods (Frequentist) Tutorial 01: R basics"
 ---
 
 ```{r setup, include=FALSE}
