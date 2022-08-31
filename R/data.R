@@ -212,3 +212,27 @@
 #'
 #' @source Thea Cameron-Faulkner, Nivedita Malik, Circle Steele, Stefano Coretta, Ludovica Serratrice, Elena Lieven. 2020. A cross cultural analysis of early prelinguistic gesture development and its relationship to language development. Child Development 92:1. 273-290. DOI: https://doi.org/10.1111/cdev.13406
 "gestures"
+
+#' Second Language Users exhibit shallow morphological processing
+#'
+#'
+#' @format A [tibble::tibble] with 1950 rows and 11 variables:
+#'   \describe{
+#'     \item{Group}{Participant group (`L1`, `L2`).}
+#'     \item{ID}{Subject unique identifier.}
+#'     \item{List}{Word list.}
+#'     \item{Target}{Target word.}
+#'     \item{RT}{Reaction time (ms).}
+#'     \item{RT_log}{Logged reaction time.}
+#'     \item{Critical_Filler}{Whether the trial is a `critical` or a `filler` trial.}
+#'     \item{Word_Nonword}{Whether the word is a real `word` or a nonce word (only `word` is present in the data).}
+#'     \item{Relation_type}{Whether the relation type is `Unrelated`, `Constituent`, or `NonConstituent`.}
+#'     \item{Branching}{Whether the trial word is `Left`-branching or `Right`-branching.}
+#'     \item{accuracy}{Whether the trial was `correct` or `incorrect`.}
+#'   }
+#'
+#' @source Song, Y., Do, Y., Thompson, A., Waegemaekers, E., & Lee, J. 2020.
+#'   SECOND LANGUAGE USERS EXHIBIT SHALLOW MORPHOLOGICAL PROCESSING. Studies in
+#'   Second Language Acquisition, 42(5), 1121-1136.
+#'   doi:10.1017/S0272263120000170
+"shallow"
