@@ -22,7 +22,8 @@ Suggests:
     knitr,
     rmarkdown,
     glottologR,
-    learnr
+    learnr,
+    rsconnect
 VignetteBuilder: knitr
 Depends: 
     R (>= 2.10)
