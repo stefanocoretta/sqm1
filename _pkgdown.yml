@@ -1,10 +1,13 @@
 url: https://stefanocoretta.github.io/sqmf/
 template:
   bootstrap: 5
-  bootswatch: flatly
+  bootswatch: united
+home:
+  sidebar: FALSE
 navbar:
+  bg: dark
   structure:
-    left: [home, info, reference]
+    left: [home, info, slides, reference]
     right: [github]
   components:
     info:
@@ -16,3 +19,9 @@ navbar:
         href: articles/objectives.html
       - text: Assessment
         href: articles/assessment.html
+    slides:
+      text: Slides
+      href: articles/slides.html
+    reference:
+      text: R package
+      href: reference/index.html
