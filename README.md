@@ -29,3 +29,32 @@ students with hands-on experience in open science practices.
 The course will teach you how to carry out statistical inference using
 **Null Hypothesis Significance Testing** and how to correctly interpret
 p-values and confidence intervals.
+
+## Install R and RStudio
+
+The workshops require you to have R and RStudio installed on your
+laptop.
+
+- To install R, go to <http://cloud.r-project.org/> and pick R (4.2.1)
+  for your operating system (Linux, macOS, Windows).
+- To install RStudio, go to
+  <https://www.rstudio.com/products/rstudio/download/#download> and
+  download RStudio (Desktop) for your operating system.
+
+## Install the R package
+
+An R package is like a plug-in, that you can install to get access to
+more functionalities.
+
+We will be using an R package designed for this course, **sqmf**.
+
+To install sqmf you need to run the following code (copy paste these
+lines in the `Console` in RStudio and press ENTER):
+
+``` r
+install.packages("remotes")
+remotes::install_github("stefanocoretta/sqmf")
+```
+
+You will see some text flashing and if it ends in `DONE (sqmf)` then
+it’s all good!
