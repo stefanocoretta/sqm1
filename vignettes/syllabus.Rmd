@@ -18,17 +18,22 @@ knitr::opts_chunk$set(
 
 This is a "living" syllabus, it will be update if necessary throughout the course, so don't forget to check it every week!
 
-| Week | Topic | Lectures (1+1 h) | Workshop (1 h) | Readings | Formative (due Mon) | Formative (due Thu) | Summative | S4LR | R4DS | Intensity |
-|---|---|---|---|---|---|---|---|---|---|---|
-| 1 | Quantitative methods and uncertainty | Quantitative data analysis, uncertainty, subjectivity, descriptive stats, Open Research. New Statistics | Introduction to R and RStudio, Rmarkdown/Quarto | - Darwin 2020 (pp1-5 top): positionality<br>- Jafar 2018: positionality |  |  |  | Ch 1 | Ch 1, 2 | 🌶🌶  |
-| 2 | Data visualisation | Principles of data viz, types of variables | Plot with ggplot2 | - Wickham 2010: GoG | - FM1: Positionality statement (one paragraph)<br>- Retrieving Syllabus (every week) |  |  |  | Ch 3 | 🌶 |
-| 3 | Linear models: Basics I | Linear model | Transform data, simulate data, lm() with continuous outcome and predictors | - Okasha 2006 (Ch 4) realism and antirealism | FM2: Grammar of graphics analysis | FT1: Data viz |  | Ch 4 | Ch 5 | 🌶🌶  |
-| 4 | Linear models: Basics II | Categorical predictors, coding (treatment, sum) | Read and summarise data, contrast coding, lm() with continuous outcome and categorical predictors | - Gelman 2017 (Sec 1-3): virtues beyond objectivity and subjectivity | FM3: What are the consequences of realism vs antirealism on quantitative research? (one paragraph) |  |  | Ch 7 | Ch 9, 10 and 11 | 🌶🌶🌶   |
-| 5 | Linear models: Discrete outcomes | Binary and count outcomes | glm() with binary and count outcome, log-odds, logit | - Gibbons 1999: social contract |  | FT2: LM report |  | Ch 12 and 13 |  | 🌶🌶  |
-| 6 | Catch-up week |  |  | - Crüwell 2019: Open Science<br>- Glass 2008: hypothesis<br>- Turing Way | FM4: Interface between Gelman's "virtues" and Gibbon's "social contract" (one paragraph) |  |  |  |  |  |
-| 7 | Linear models: Basics III | Interactions, centering, standardisation | g/lm() with interactions, plotting interactions, scale() |  |  | FT3: Data wrangle + simple modelling |  | Ch 8 and 5 | Ch 12 | 🌶🌶🌶   |
-| 8 | Linear models: Hierarchical data | Fixed and varying effects, pooling and shrinkage | g/lmer(), plotting varying effects |  |  |  |  | Ch 14 and 15 |  | 🌶🌶  |
-| 9 | Significance testing I | Statistical inference and NHST | Calculate p-values with lmerTest | - Gigerenzer 2004 (Sec 1-4): mindless statistics |  | FT4: Modelling | Release data for S1 | Ch 9, 10 and 11 |  | 🌶🌶🌶   |
-| 10 | Significance testing II | Alpha and beta, Type I/II/M/S errors | Power analysis |  |  |  |  | Ch 9, 10 and 11 |  | 🌶🌶  |
-| 11 |  |  |  |  |  |  |  |  |  |  |
-| 12 |  |  |  |  |  |  | S1: Data viz and modelling |  |  |  |
+```{=html}
+<iframe src="./sqmf-syllabus.pdf" width="100%" height="500px">
+</iframe>
+```
+
+<!-- | Week | Topic | Lectures (1+1 h) | Workshop (1 h) | Readings | Formative (due Mon) | Formative (due Thu) | Summative | S4LR | R4DS | Intensity | -->
+<!-- |---|---|---|---|---|---|---|---|---|---|---| -->
+<!-- | 1 | Quantitative methods and uncertainty | Quantitative data analysis, uncertainty, subjectivity, descriptive stats, Open Research. New Statistics | Introduction to R and RStudio, Rmarkdown/Quarto | - Darwin 2020 (pp1-5 top): positionality<br>- Jafar 2018: positionality |  |  |  | Ch 1 | Ch 1, 2 | 🌶🌶  | -->
+<!-- | 2 | Data visualisation | Principles of data viz, types of variables | Plot with ggplot2 | - Wickham 2010: GoG | - FM1: Positionality statement (one paragraph)<br>- Retrieving Syllabus (every week) |  |  |  | Ch 3 | 🌶 | -->
+<!-- | 3 | Linear models: Basics I | Linear model | Transform data, simulate data, lm() with continuous outcome and predictors | - Okasha 2006 (Ch 4) realism and antirealism | FM2: Grammar of graphics analysis | FT1: Data viz |  | Ch 4 | Ch 5 | 🌶🌶  | -->
+<!-- | 4 | Linear models: Basics II | Categorical predictors, coding (treatment, sum) | Read and summarise data, contrast coding, lm() with continuous outcome and categorical predictors | - Gelman 2017 (Sec 1-3): virtues beyond objectivity and subjectivity | FM3: What are the consequences of realism vs antirealism on quantitative research? (one paragraph) |  |  | Ch 7 | Ch 9, 10 and 11 | 🌶🌶🌶   | -->
+<!-- | 5 | Linear models: Discrete outcomes | Binary and count outcomes | glm() with binary and count outcome, log-odds, logit | - Gibbons 1999: social contract |  | FT2: LM report |  | Ch 12 and 13 |  | 🌶🌶  | -->
+<!-- | 6 | Catch-up week |  |  | - Crüwell 2019: Open Science<br>- Glass 2008: hypothesis<br>- Turing Way | FM4: Interface between Gelman's "virtues" and Gibbon's "social contract" (one paragraph) |  |  |  |  |  | -->
+<!-- | 7 | Linear models: Basics III | Interactions, centering, standardisation | g/lm() with interactions, plotting interactions, scale() |  |  | FT3: Data wrangle + simple modelling |  | Ch 8 and 5 | Ch 12 | 🌶🌶🌶   | -->
+<!-- | 8 | Linear models: Hierarchical data | Fixed and varying effects, pooling and shrinkage | g/lmer(), plotting varying effects |  |  |  |  | Ch 14 and 15 |  | 🌶🌶  | -->
+<!-- | 9 | Significance testing I | Statistical inference and NHST | Calculate p-values with lmerTest | - Gigerenzer 2004 (Sec 1-4): mindless statistics |  | FT4: Modelling | Release data for S1 | Ch 9, 10 and 11 |  | 🌶🌶🌶   | -->
+<!-- | 10 | Significance testing II | Alpha and beta, Type I/II/M/S errors | Power analysis |  |  |  |  | Ch 9, 10 and 11 |  | 🌶🌶  | -->
+<!-- | 11 |  |  |  |  |  |  |  |  |  |  | -->
+<!-- | 12 |  |  |  |  |  |  | S1: Data viz and modelling |  |  |  | -->
