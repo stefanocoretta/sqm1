@@ -32,7 +32,3 @@ This is a "living" syllabus, it will be update if necessary throughout the cours
 | 10 | Significance testing II | Alpha and beta, Type I/II/M/S errors | Power analysis |  |  |  |  | Ch 9, 10 and 11 |  | 🌶🌶  |
 | 11 |  |  |  |  |  |  |  |  |  |  |
 | 12 |  |  |  |  |  |  | S1: Data viz and modelling |  |  |  |
-
-## Resource list
-
-You can find the resource list of this course [here](https://eu01.alma.exlibrisgroup.com/leganto/public/44UOE_INST/lists/38657070650002466?auth=SAML).

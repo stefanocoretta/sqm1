@@ -7,7 +7,7 @@ home:
 navbar:
   bg: dark
   structure:
-    left: [home, info, slides, reference]
+    left: [home, info, slides, readings, reference]
     right: [github]
   components:
     info:
@@ -22,6 +22,9 @@ navbar:
     slides:
       text: Slides
       href: articles/slides.html
+    readings:
+      text: Readings
+      href: "https://eu01.alma.exlibrisgroup.com/leganto/public/44UOE_INST/lists/38657070650002466?auth=SAML"
     reference:
       text: R package
       href: reference/index.html
