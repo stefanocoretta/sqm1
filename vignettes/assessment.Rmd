@@ -39,17 +39,20 @@ These are optional but we strongly recommend you to complete as many as you can 
 These are divided between **assessments due on Mondays (FM)** and **assessments due on Thursdays (FT)**.
 The retrieving syllabus (RS) is due every week on Monday.
 
-- **Formative assessments due on Mondays**
-  - RS (every week): Retrieving syllabus.
-  - FM1 (Week 2): Positionality statement (one paragraph).
-  - FM2 (Week 3): Grammar of graphics analysis.
-  - FM3 (Week 4): What are the consequences of realism vs antirealism on quantitative research? (one paragraph).
-  - FM4 (Week 6): Interface between Gelman's "virtues" and Gibbon's "social contract" (one paragraph).
-- **Formative assessments due on Thursdays**
-  - FT1 (Week 3): Data viz.
-  - FT2 (Week 5): Linear model report.
-  - FT3 (Week 7): Data wrangle + simple modelling.
-  - FT4 (Week 9): Modelling.
+#### Formative assessments due on Mondays
+- **RS (every week)**: "Retrieving syllabus".
+  - You can find the template [here](https://docs.google.com/spreadsheets/d/1TMKKKC9YRo2VNpkoG8bw_lu2ZKKT-1-UsNV7r0rMwV4/edit?usp=sharing). Each week, write one short sentence in Columns 3-5. See template for directions on what to write. **NOTE**: You have to submit this formative assessment on Monday of Week 10.
+- **FM1 (Week 2)**: Positionality statement (one short paragraph).
+  - Submit one short paragraph describing your *positionality*, based on the readings from Week 1 (Darwin 2020, Jafar 2018).
+- **FM2 (Week 3)**: Grammar of graphics analysis.
+- **FM3 (Week 4)**: What are the consequences of realism vs antirealism on quantitative research? (one paragraph).
+- **FM4 (Week 6)**: Interface between Gelman's "virtues" and Gibbon's "social contract" (one paragraph).
+  
+#### Formative assessments due on Thursdays
+- **FT1 (Week 3)**: Data viz.
+- **FT2 (Week 5)**: Linear model report.
+- **FT3 (Week 7)**: Data wrangle + simple modelling.
+- **FT4 (Week 9)**: Modelling.
 
 If you feel that all 9 formative assessments are too much, then you can choose to submit only the Thursday's formative assessments.
 
@@ -61,7 +64,8 @@ If you feel that all 9 formative assessments are too much, then you can choose t
 </div>
 ```
 
-There is only one summative assessment for this course.
+There is only summative assessment for this course.
+Your final mark will be the mark you get on this assessment.
 
 You will be given a data set and you will have to:
 
@@ -71,4 +75,4 @@ You will be given a data set and you will have to:
 
 You will submit this assessment in the form of a lab report.
 
-More information will be released soon.
+More information will be released in due course
