@@ -20,6 +20,7 @@ This course will be assessed on the basis of a **set of formative assessments** 
 
 **Formative assessments** are assessments for which you might receive feedback on, but which will not be marked.
 These will give you a chance to keep on track with the course contents and get interim feedback that will better prepare you for the summative assessment.
+See below for info.
 
 You will have to submit one **summative assessment**. This assessment will be marked and that will be your final mark.
 
@@ -40,6 +41,7 @@ These are divided between **assessments due on Mondays (FM)** and **assessments 
 The retrieving syllabus (RS) is due every week on Monday.
 
 #### Formative assessments due on Mondays
+
 - **RS (every week)**: "Retrieving syllabus".
   - You can find the template [here](https://docs.google.com/spreadsheets/d/1TMKKKC9YRo2VNpkoG8bw_lu2ZKKT-1-UsNV7r0rMwV4/edit?usp=sharing). Each week, write one short sentence in Columns 3-5. See template for directions on what to write. **NOTE**: You have to submit this formative assessment on Monday of Week 10.
 - **FM1 (Week 2)**: Positionality statement (one short paragraph).
@@ -49,6 +51,7 @@ The retrieving syllabus (RS) is due every week on Monday.
 - **FM4 (Week 6)**: Interface between Gelman's "virtues" and Gibbon's "social contract" (one paragraph).
   
 #### Formative assessments due on Thursdays
+
 - **FT1 (Week 3)**: Data viz.
 - **FT2 (Week 5)**: Linear model report.
 - **FT3 (Week 7)**: Data wrangle + simple modelling.
