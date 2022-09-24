@@ -1,8 +1,8 @@
 Package: sqmf
 Type: Package
 Title: Statistics and Quantitative Methods (Frequentist)
-Version: 1.0.0
-Date: 2022-09-20
+Version: 1.0.0.9000
+Date: 2022-09-24
 Authors@R: person("Stefano", "Coretta",
                   email = paste0("stefano.coretta", "@", "gmail.com"),
                   role = c("aut", "cre"),
@@ -18,11 +18,12 @@ URL: https://github.com/stefanocoretta/sqmf,
 BugReports: https://github.com/stefanocoretta/sqmf/issues
 Remotes:
     stefanocoretta/glottologR
+Imports:
+  glottologR (>= 0.4.1),
+  learnr
 Suggests: 
     knitr,
     rmarkdown,
-    glottologR,
-    learnr,
     rsconnect
 VignetteBuilder: knitr
 Depends: 

@@ -1,3 +1,9 @@
+# sqmf 1.0.0.9000
+
+* WIP
+
+
+
 # sqmf 1.0.0
 
 * Added `01_r_basics` tutorial.
