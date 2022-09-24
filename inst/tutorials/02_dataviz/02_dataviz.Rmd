@@ -9,7 +9,12 @@ description: "Statistics and Quantitative Methods (Frequentist) Tutorial 02: Dat
 ---
 
 ```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
 library(learnr)
+# tutorial_options(
+#   exercise.blank = "..."
+# )
 library(glottologR)
 data("glot_aes")
 glot_aes$AES <- factor(glot_aes$AES, levels = c("not_endangered", "threatened", "shifting", "moribund", "nearly_extinct", "extinct"))
@@ -17,7 +22,6 @@ library(sqmf)
 data("polite")
 data("mald_1_1")
 data("gestures")
-knitr::opts_chunk$set(echo = FALSE)
 ```
 
 ## The basics
@@ -112,9 +116,13 @@ question(
   "Which of the following will produce the same plot as the one above?",
   answer('`ggplot(polite, aes(H1H2, f0mn)) + geom_point()`'),
   answer('`ggplot(polite, aes(y = H1H2, x = f0mn)) + geom_point()`', correct = TRUE),
-  answer('`ggplot(polite, aes(y = f0mn, x = H1H2)) + geom_point()`')
+  answer('`ggplot(polite, aes(y = f0mn, x = H1H2)) + geom_point()`'),
+  correct = "Correct! Since the aesthetics are named, it does not matter that *y* comes before *x*.",
+  incorrect = "Nope! The mapping of variable to aesthetics *x* and *y* is different from the plot above."
 )
 ```
+
+
 
 
 
@@ -145,7 +153,7 @@ To create a bar chart, add `geom_bar()` to the plot.
 
 You only need one axis, the *x* axis to be precise, because the *y*-axis will have the counts.
 
-```{r aes-bars, exercise=TRUE, exercise.setup = "tidy-load"}
+```{r aes-bars, exercise=TRUE}
 glot_aes %>%
   ggplot(aes(x = AES)) +
   ...
@@ -222,6 +230,66 @@ question(
 )
 ```
 
+## Legends and labels
+
+### Positioning the legend
+
+The position of the legend can be set with the `legend.position` argument in `theme()`.
+
+Move the legend to the `"bottom"`.
+
+```{r aes-legend, exercise=TRUE, exercise.setup = "tidy-load"}
+ggplot(
+  data = glot_aes,
+  mapping = aes(x = Macroarea, fill = AES)
+) +
+  geom_bar() +
+  ...
+```
+
+```{r aes-legend-hint}
+theme(legend.position = ...)
+```
+
+### Plot titles and labels
+
+The `labs()` function allows you to set the plot title, subtitle, axis labels and more.
+
+Since these are strings (i.e. text), they must be quoted with `"`.
+
+```{r aes-title, exercise=TRUE, exercise.setup = "tidy-load"}
+ggplot(
+  data = glot_aes,
+  mapping = aes(x = Macroarea, fill = AES)
+) +
+  geom_bar() +
+  labs(
+    title = "Number of languages by macro-area and\nAggregated Endangerement Status"
+  )
+```
+
+NOTE: We use `\n` to split the title into two lines, so that it fits the plot. `\n` simply means "**n**ew line".
+
+### Axis labels
+
+To change the axis labels, you specify a string for `x` and `y`.
+
+I have changed the `x` label here below.
+Go ahead and change `y` to `"Number of languages"`.
+
+```{r aes-labs, exercise=TRUE, exercise.setup = "tidy-load"}
+ggplot(
+  data = glot_aes,
+  mapping = aes(x = Macroarea, fill = AES)
+) +
+  geom_bar() +
+  labs(
+    # We use \n to split the title into two lines. \n means "new line"
+    title = "Number of languages by macro-area and\nAggregated Endangerement Status",
+    x = "Language macro-area",
+    ...
+  )
+```
 
 
 
@@ -229,7 +297,129 @@ question(
 
 
 
+## Density and violin plots
+
+**Density plots show the distribution of the values of a continuous variable.**
+
+Take for example the Reaction Times (`RT`) values in the *MAssive Lexical Decision* data set (`mald_1_1`).
+
+```{r mald}
+mald_1_1
+```
+
+### Reaction times
+
+To plot the density of a continuous variable, you can use the `density` geometry.
+
+Fill in the following code to create a density plot.
+
+```{r mald-dens, exercise=TRUE, exercise.setup = "tidy-load"}
+mald_1_1 %>%
+  ggplot(aes(RT)) +
+  ...
+```
+
+<div id="mald-dens-hint">
+Remember that all geometries start with `geom_`?
+</div>
+
+### Make things cozy with a rug
+
+The density line shows you a smoothed representation of the data distribution, but you might also want to see the raw data.
+
+You can do so by adding the `rug` geometry.
+
+```{r mald-dens-rug, exercise=TRUE, exercise.setup = "tidy-load"}
+mald_1_1 %>%
+  ggplot(aes(RT)) +
+  geom_density() +
+  ...
+```
 
 
+### Violin plots
+
+An efficient way of showing the distribution of continuous variables depending on discrete groups (like `attitude`) are the so-called **violin plots**.
+
+Go ahead and run the following code.
+
+```{r pol-viol, exercise=TRUE}
+polite %>%
+  ggplot(aes(attitude, f0mn)) +
+  geom_violin()
+```
+
+They are called violin plots because they look like violins!
+
+### Lay over the raw data
+
+You can lay over raw data on top of the violins.
+
+To do so, you can use the `jitter` geometry.
+Fill the following code chunk and run it.
+
+```{r pol-viol-jit, exercise=TRUE}
+polite %>%
+  ggplot(aes(attitude, f0mn)) +
+  geom_violin() +
+  ...
+```
+
+That doesn't look great right?
+The points are spread too widely.
+
+We can fix that by specifying the argument `width` in the jitter geometry something smaller than `0.5`.
+Try a few values until you think it looks better.
+
+```{r pol-viol-jit-2, exercise=TRUE}
+polite %>%
+  ggplot(aes(attitude, f0mn)) +
+  geom_violin() +
+  ...
+```
+
+```{r pol-viol-jit-2-hint}
+geom_jitter(width = ...)
+```
+
+Note that the order between the violin and jitter geoms is important.
+If you add the jitter geometry before the violin geometry, the violins will just cover up the jittered points (see why it is called "layered" grammar of graphics?).
 
 
+### Let's add some colour
+
+Let's **fill** the violins with colour.
+For now, just colour the violins depending on `attitude`
+
+```{r pol-colour, exercise=TRUE}
+polite %>%
+  ggplot(aes(attitude, f0mn, ...)) +
+  geom_violin()
+```
+
+```{r pol-colour-hint}
+fill = ...
+```
+
+Not bad!
+But maybe we can improve by making the fill a bit transparent?
+
+You can achieve that with the `alpha` argument in `geom_violin()`, which takes a number between 0 (completely transparent) and 1 (completely opaque).
+
+Add it to the code above to make the fill transparent.
+Try different values until you are satisfied with the output.
+
+### Separate the data by gender
+
+In the previous section we have filled the violins with colours dependingn on `attitude`.
+This helps making the plot somewhat more appealing, but colour there doesn't add information to the plot: attitude is already marked by the *x*-axis, so filling by attitude is a bit redundant.
+
+Instead, we can use the fill argument to separate the data into further groups based on other variables in the data.
+
+Go ahead and separate the data by `gender` using the `fill` argument.
+
+```{r pol-colour-gen, exercise=TRUE}
+polite %>%
+  ggplot(aes(attitude, f0mn, ...)) +
+  geom_violin()
+```
