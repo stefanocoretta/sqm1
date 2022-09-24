@@ -1,0 +1,235 @@
+---
+title: "SQM 02 - Data visualisation"
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+runtime: shiny_prerendered
+description: "Statistics and Quantitative Methods (Frequentist) Tutorial 02: Dataviz"
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+library(glottologR)
+data("glot_aes")
+glot_aes$AES <- factor(glot_aes$AES, levels = c("not_endangered", "threatened", "shifting", "moribund", "nearly_extinct", "extinct"))
+library(sqmf)
+data("polite")
+data("mald_1_1")
+data("gestures")
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## The basics
+
+### Start here
+
+The tidyverse package [ggplot2](https://ggplot2.tidyverse.org) provides users with a consistent set of functions to create captivating graphics. 
+To be able to use the functions in a package, you first need to **attach the package**.
+Here, we can attach the entire tidyverse, which includes ggplot2.
+
+You only have to attach packages once, when you start your R session in RStudio.
+They will stay attached until you close RStudio and end the R session.
+
+Attach the tidyverse now.
+
+```{r tidy-load, exercise=TRUE}
+library(tidyverse)
+```
+
+### A basic plot
+
+These are the minimum constituents of a ggplot.
+
+- The `data`: you have to specify the data frame with the data you want to plot.
+
+- The `mapping`: the mapping tells ggplot how to map data to parts of the plot like the axes or groupings within the data. These parts are called *aesthetics*, or `aes` for short.
+
+You can specify the data and mapping with the `data` and `mapping` arguments of the `ggplot()` function.
+
+Note that the `mapping` argument is always specified with `aes()`.
+
+In the following bare plot, we are just mapping the mean f0 (`f0`) to the *x*-axis and the H2-H1 difference to the *y*-axis, from the `polite` data frame.
+
+```{r bare-plot, exercise=TRUE, exercise.setup = "tidy-load"}
+ggplot(
+  data = polite,
+  mapping = aes(x = f0mn, y = H1H2)
+)
+```
+
+Not much to see here: just two axes!
+
+### Let's add geometries
+
+Nice, but we are missing the most important part: showing the data!
+
+Data is represented with **geometries**, or `geom`s for short.
+`geom`s are added to the base ggplot with functions whose names all start with `geom_`.
+
+For this plot, you want to use `geom_point()`.
+This geom simply adds point to the plot based on the data in the `polite` data frame.
+
+Add the geom to the following code and run it.
+
+
+```{r first-plot, exercise=TRUE, exercise.setup = "tidy-load"}
+ggplot(
+  data = polite,
+  mapping = aes(x = f0mn, y = H1H2)
+) +
+  ...
+```
+
+This type of plot, with two continuous axes and data represented by points, is called a **scatter plot**
+
+### Function arguments
+
+Note that the `data` and `mapping` arguments don't have to be named explicitly (with `data =` and `mapping =`) in the `ggplot()` function, since they are obligatory and they are specified in that order
+
+```{r named-arguments-1, exercise=TRUE, exercise.setup = "tidy-load"}
+ggplot(
+  polite,
+  aes(x = f0mn, y = H1H2)
+) +
+  geom_point()
+```
+
+In fact, you can also leave out `x =` and `y =`.
+
+```{r named-arguments-2, exercise=TRUE, exercise.setup = "tidy-load"}
+ggplot(
+  polite,
+  aes(f0mn, H1H2)
+) +
+  geom_point()
+```
+
+Try running `?ggplot` in the Console to see the arguments of the function and the order they appear in.
+
+```{r Q-named-arguments, echo=FALSE}
+question(
+  "Which of the following will produce the same plot as the one above?",
+  answer('`ggplot(polite, aes(H1H2, f0mn)) + geom_point()`'),
+  answer('`ggplot(polite, aes(y = H1H2, x = f0mn)) + geom_point()`', correct = TRUE),
+  answer('`ggplot(polite, aes(y = f0mn, x = H1H2)) + geom_point()`')
+)
+```
+
+
+
+
+
+## Bar charts
+
+Another common type of plot is the **bar chart**.
+
+**Bar charts are useful when you are counting things.**
+In the following example, we will be counting the number of languages by their endangerment status.
+
+### Do you understand me?
+
+There are thousands of languages in the world, but most of them are loosing speakers, and some are already no longer spoken.
+The endangerment status of a language in the data is on a scale from `not endangered` (languages with large populations of speakers) through `threatened`, `shifting` and `nearly extinct`, to `extinct` (languages that have no living speakers left).
+
+The `glot_aes` data frame contains the endangerment status for 7,845 languages from [Glottolog](https://glottolog.org).
+Here's what it looks like.
+
+```{r aes}
+glot_aes
+```
+
+### Create a bar chart
+
+To create a bar chart, add `geom_bar()` to the plot.
+
+You only need one axis, the *x* axis to be precise, because the *y*-axis will have the counts.
+
+```{r aes-bars, exercise=TRUE, exercise.setup = "tidy-load"}
+glot_aes %>%
+  ggplot(aes(x = AES)) +
+  ...
+```
+
+Note how the counting is done automatically.
+R looks in the `AES` column and counts how many times each value in the column occurs in the data frame.
+
+If you are baffled by that `%>%`, keep on reading.
+
+### What the pipe?!
+
+Wait, what is that thing, `%>%`?
+
+It's called a **pipe**.
+Think of a pipe as a teleporter.
+
+In the previous code chunk, instead of specifying the data frame *inside* `ggplot()`, we teleport it into `ggplot()` by using the pipe.
+
+So the following lines of code are equivalent.
+
+```{r aes-pipe, eval=FALSE}
+# Using the pipe
+glot_aes %>%
+  ggplot(aes(AES)) +
+  geom_bar()
+
+# Without the pipe
+glot_aes(
+  glot_aes, aes(AES)
+) +
+  geom_bar()
+```
+
+Don't worry too much if the concept is not clear yet.
+It should become clearer in later tutorials.
+
+### Stacked bar charts
+
+A special type of bar charts are the so-called **stacked bar charts**.
+These are bar charts where each bar contains a "stack" of shorter bars, each indicating the counts of some sub-groups.
+
+To create a stacked bar chart, you just need to add a new aesthetic mapping: `fill`.
+The `fill` aesthetic let's you fill bars or areas with different colours depending on the values of a specified column.
+
+Let's make a plot on language endangerment by macroarea.
+
+Complete the following code by specifying that `fill` should be based on `AES`.
+
+```{r aes-stacked, exercise=TRUE, exercise.setup = "tidy-load"}
+ggplot(
+  data = glot_aes,
+  mapping = aes(x = Macroarea, ...)
+) +
+  geom_bar()
+```
+
+```{r aes-stacked-hint}
+aes(x = Macroarea, fill = ...)
+```
+
+
+What if we want to move the colour legend to the bottom of the plot?
+
+Check out the documentation of `theme` by typing `?theme` in the RStudio Console and press ENTER.
+Search for the word `position`.
+
+```{r Q-legend-pos, echo=FALSE}
+question(
+  "Which of the following moves the legend to the bottom of the plot?",
+  answer('`legend("bottom")`'),
+  answer('`theme(legend.position = "bottom")`', correct = TRUE),
+  answer('`theme(legend.bottom)`')
+)
+```
+
+
+
+
+
+
+
+
+
+
+
+
