@@ -551,15 +551,15 @@
     },
     "glottologR": {
       "Package": "glottologR",
-      "Version": "0.4.1",
+      "Version": "0.4.2",
       "Source": "GitHub",
       "RemoteType": "github",
+      "RemoteHost": "api.github.com",
       "RemoteUsername": "stefanocoretta",
       "RemoteRepo": "glottologR",
-      "RemoteRef": "main",
-      "RemoteSha": "6ad26a993c4235010d83f2c6253752a3b09c25f7",
-      "RemoteHost": "api.github.com",
-      "Hash": "0c221fdb2bba412e78d06982aef0d551",
+      "RemoteRef": "v0.4.2",
+      "RemoteSha": "46badd0bb5ca0d877dbf231b29db0358aab6cba6",
+      "Hash": "ed9dfa4d4813144cdaee0ed6f8503e02",
       "Requirements": []
     },
     "glue": {
