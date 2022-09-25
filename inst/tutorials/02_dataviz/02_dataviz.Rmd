@@ -423,3 +423,50 @@ polite %>%
   ggplot(aes(attitude, f0mn, ...)) +
   geom_violin()
 ```
+
+## Faceting and panels
+
+Sometimes we might want to separate the data into separate panels.
+
+We can achieve that easily using **faceting**.
+
+### Attitudes again
+
+Let's recreate the attitude plot from the previous section.
+
+```{r pol-viol-2, exercise=TRUE}
+polite %>%
+  ggplot(aes(attitude, f0mn, fill = gender)) +
+  geom_violin()
+```
+
+### Does being a music student matter?
+
+That looks great, but we want to know if being a music student has an effect on how attitude affects mean f0.
+
+In the plot above, the aesthetics mappings are the following:
+
+- `attitude` on the *x*-axis.
+- `f0mn` on the *y*-axis.
+- `gender` as fill in the violin geometry.
+
+How can we separate data further depending on whether the participant is a music student or not?
+
+We can create panels using `facet_grid()`.
+This function takes lists of variables to specify panels in rows and/or columns.
+
+The syntax is a bit strange.
+Check the documentation with `?facet_grid()` to see how it works and then complete the code below and run it to produce a plot with two column panels.
+
+
+```{r pol-facet, exercise=TRUE}
+polite %>%
+  ggplot(aes(attitude, f0mn, fill = gender)) +
+  geom_violin() +
+  facet_grid(...)
+```
+
+```{r pol-facet-hint}
+facet_grid(cols = ...)
+```
+
