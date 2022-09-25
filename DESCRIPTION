@@ -2,7 +2,7 @@ Package: sqmf
 Type: Package
 Title: Statistics and Quantitative Methods (Frequentist)
 Version: 1.0.0.9000
-Date: 2022-09-24
+Date: 2022-09-25
 Authors@R: person("Stefano", "Coretta",
                   email = paste0("stefano.coretta", "@", "gmail.com"),
                   role = c("aut", "cre"),
@@ -19,7 +19,7 @@ BugReports: https://github.com/stefanocoretta/sqmf/issues
 Remotes:
     stefanocoretta/glottologR
 Imports:
-  glottologR (>= 0.4.1),
+  glottologR (>= 0.4.2),
   learnr,
   tidyverse
 Suggests: 
