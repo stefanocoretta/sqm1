@@ -4,6 +4,8 @@
 # Statistics and Quantitative Methods (Semester 1)
 
 <!-- badges: start -->
+
+[![](https://img.shields.io/badge/devel%20version-1.1.0-orange.svg)](https://github.com/stefanocoretta/sqmf)
 <!-- badges: end -->
 
 Welcome to the main site of the course *Statistics and Quantitative

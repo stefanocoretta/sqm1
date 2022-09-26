@@ -1,6 +1,10 @@
-# sqmf 1.0.0.9000
+# sqmf 1.1.0
 
-* WIP
+* Update course website.
+
+* Update week 2 tutorial.
+
+* Bump glottologR.
 
 
 
