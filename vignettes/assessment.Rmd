@@ -38,9 +38,9 @@ There are **9 formative assessments**.
 These are optional but we strongly recommend you to complete as many as you can so that you can keep up with the materials and receive interim feedback.
 
 These are divided between **assessments due on Mondays (FM)** and **assessments due on Thursdays (FT)**.
-The retrieving syllabus (RS) is due every week on Monday.
+**All assessments are due by noon.**
 
-#### Formative assessments due on Mondays
+#### Formative assessments due on Mondays (noon)
 
 - **RS (every week)**: "Retrieving syllabus".
   - You can find the template [here](https://docs.google.com/spreadsheets/d/1TMKKKC9YRo2VNpkoG8bw_lu2ZKKT-1-UsNV7r0rMwV4/edit?usp=sharing). Each week, write one short sentence in Columns 3-5. See template for directions on what to write. **NOTE**: You have to submit this formative assessment on Monday of Week 10.
@@ -50,7 +50,7 @@ The retrieving syllabus (RS) is due every week on Monday.
 - **FM3 (Week 4)**: What are the consequences of realism vs antirealism on quantitative research? (one paragraph).
 - **FM4 (Week 6)**: Interface between Gelman's "virtues" and Gibbon's "social contract" (one paragraph).
   
-#### Formative assessments due on Thursdays
+#### Formative assessments due on Thursdays (noon)
 
 - **FT1 (Week 3)**: Data viz.
 - **FT2 (Week 5)**: Linear model report.
