@@ -236,3 +236,27 @@
 #'   Second Language Acquisition, 42(5), 1121-1136.
 #'   doi:10.1017/S0272263120000170
 "shallow"
+
+
+# FORMATIVE ASSESSMENTS DATA ----
+
+#' FT1: Data visualisation
+#'
+#' A selection of data from Sluckin and Kastner 2022. Only UK participants
+#' from four experimental conditions are included.
+#'
+#'
+#'
+#' @format A [tibble::tibble] with 2530 rows and 7 variables:
+#'   \describe{
+#'     \item{Subject}{Subject identifier.}
+#'     \item{Condition}{Experimental condition (`gold-bad`, `gold-good`, `simple`, `adverb`, `modal`).}
+#'     \item{Restrictor}{Whether the sentence contained a restrictor or not (`non-restricted`, `restricted`).}
+#'     \item{Value}{Acceptability scale (Likert scale: 1-7).}
+#'     \item{Age}{Subject's age group.}
+#'     \item{Education}{Subject's education level.}
+#'     \item{Gender}{Subject's self-reported gender.}
+#'   }
+#'
+#' @source Sluckin, Benjamin L. and Itamar Kastner. 2022. 'Everywhere here can say this': The English locative impersonal. LingBuzz. https://ling.auf.net/lingbuzz/006708
+"ft1_data"

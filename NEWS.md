@@ -1,3 +1,9 @@
+# sqmf 1.1.1
+
+* Add FT1 data.
+
+
+
 # sqmf 1.1.0
 
 * Update course website.

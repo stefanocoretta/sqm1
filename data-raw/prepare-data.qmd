@@ -136,3 +136,21 @@ shallow <- read_csv("https://raw.githubusercontent.com/stefanocoretta/quick-line
 
 usethis::use_data(shallow, overwrite = TRUE)
 ```
+
+## Formative assessments
+
+### FT1: Data viz
+
+```{r}
+ft1_data <- read_csv("https://osf.io/download/vaujp/?view_only=edba6a2255044ce6af6a519b85c9e65f") %>%
+  select(Subject, Condition, Restrictor, Value, Age, Education, Gender) %>%
+  mutate(
+    Restrictor = ifelse(Restrictor == 0, "non-restricted", "restricted"),
+    Value = as.factor(Value)
+  ) %>%
+  filter(
+    Condition %in% c("gold-good", "gold-bad", "simple", "adverb", "modal")
+  )
+
+usethis::use_data(ft1_data, overwrite = TRUE)
+```
