@@ -1,0 +1,294 @@
+---
+title: "04 Transform data"
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+runtime: shiny_prerendered
+description: Transform (filter, mutate, select) data with the tidyverse.
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(learnr)
+library(sqmf)
+library(tidyverse)
+shallow <- read_csv("https://raw.githubusercontent.com/stefanocoretta/quick-linear-models/main/04-fit-models/shallow-morph.csv")
+```
+
+## The data
+
+For this tutorial, we will use the data from this paper: <https://doi.org/10.1017/S0272263120000170>.
+
+> The present study tests the Shallow Structure Hypothesis (SSH), which claims that compared to L1 processing, L2 language processing generally underuses grammatical information, prioritizing nongrammatical information. Specifically, this cross-modal priming study tests SSH at the level of morphology, investigating whether late advanced L2 learners construct hierarchically structured representations for trimorphemic derived words during real-time processing as native speakers do. Our results support SSH. In lexical decision on English trimorphemic words (e.g., unkindness or [[un-[kind]]-ness]), L1 recognition of the targets was facilitated by their bimorphemic morphological-structural constituent primes (e.g., unkind), but not by their bimorphemic nonconstituent primes (e.g., kindness), which were only semantically and formally related to the target. In contrast, L2 recognition was equally facilitated by both constituent and nonconstituent primes. These results suggest that unlike L1 processing, L2 processing of multimorphemic words is not mainly guided by detailed morphological structure, overrelying on nonstructural information.
+
+For more information, check the paper.
+
+Here's the raw data (I have imported the data for you. You will learn how to import data in Week 4).
+
+```{r shallow}
+shallow
+```
+
+Remember that data tables (i.e. spreadsheet-like data) are called **data frames** or **tibbles** in R.
+
+## Filter
+
+**Data transformation** is a fundamental aspect of data analysis.
+
+After the data you need to use is imported into R, you will very frequently need to filter rows, create new columns, or select some of the existing columns, among many other transformation operations.
+
+
+### Filter data
+
+You can filter a data frame with `filter()`, from the dplyr package (part of the tidyverse).
+
+`filter()` needs two arguments:
+
+- The data frame you want to filter.
+
+- At least one rule to filter the data with.
+
+The column `Critical_Filler` indicates which trials are the critical (experimental) trials or just fillers (distractors).
+Let's filter `shallow` so that it returns only the critical trials (`Critical`).
+
+Couldn't be easier!
+
+```{r shal-filt, exercise=TRUE}
+filter(
+  shallow,                         # The data frame
+  Critical_Filler == "Critical"    # The rule
+)
+```
+
+The code above filters the rows of the `shallow` data frame so that only the rows where `Critical_Filler` equals (`==`) `"Critical"` are returned.
+
+```{r q-n-crit, echo=FALSE}
+question(
+  "How many critical trials are there in the tibble?",
+  answer("6500"),
+  answer("1950", correct = TRUE),
+  answer("2000"),
+  answer("11")
+)
+```
+
+<div id="n-crit-hint">
+When printing tibbles in the Console, the first line indicates the number of **rows** × **columns**.
+</div>
+
+Let's try again now using the pipe `%>%`.
+Do you remember how it works?
+Change the code below so that it uses the pipe.
+
+```{r shal-pipe, exercise=TRUE}
+filter(
+  shallow,                         # The data frame
+  Critical_Filler == "Critical"    # The rule
+)
+```
+
+### Logical operators
+
+The double equal sign we used above `==` is called a *logical operator*.
+Logical operators are special symbols that allow you to compare objects.
+
+These are the basic logical operators:
+
+- `A == B`: A is *equal* to B.
+- `A != B`: A in *not* equal to B.
+- `A > B`: A is *greater* than B.
+- `A < B`: A is *smaller* than B.
+
+Logical operators return a "logical", i.e. either `TRUE` or `FALSE`.
+
+```{r logic}
+10 > 4
+2 == 3
+```
+
+Try the logical operators out! Fill in the following code so that you get TRUE in the first 3 comparisons and FALSE in the last 3.
+
+```{r logic-ex, exercise=TRUE, eval=FALSE}
+# These should return `TRUE`
+... < 20
+"a" == ...
+"apple" != ...
+
+# These should return `FALSE`
+"zoo" ... "park"
+120 ... 43
+0.1 ... 0.002
+```
+
+### Multiple filtering
+
+You can filter a data frame based on more than one column.
+Simply add more rules, separated by commas.
+
+```{r multi-filt, exercise=TRUE}
+shallow %>%
+  filter(
+    Critical_Filler == "Critical",
+    RT > 1000
+  )
+```
+
+```{r q-multi-filt, echo=FALSE}
+question(
+  "Which of the following statements is correct?",
+  answer("There are 10 observations that are critical trials and in which the reaction times are greater than 1000 ms."),
+  answer("Out of a total of 6500 observations, 616 are critical trials or have reaction times that are greater than 1 s."),
+  answer("There are 616/6500 trials that are critical and generated reaction times that are greater than 1 s.", correct = TRUE)
+)
+```
+
+Now filter the data so that you get only those trials that are critical, unrelated relation type, right branching and have RTs that are lower or equal to 494 ms.
+
+```{r shal-filt-2, exercise=TRUE}
+shallow %>%
+  filter(
+    ...
+  )
+```
+
+<div id="shal-filt-2-hint">
+The less or equal and more or equal operators are `<=` and `>=` respectively.
+</div>
+
+
+## Mutate
+
+What if you want to create a new column based on existing columns?
+
+You can create new columns with the `mutate()` function from dplyr.
+
+### How to create a new column
+
+`mutate()` needs the name of the data frame you want to mutate, the name of the new column and the code to create it.
+
+```{r long-rt, exercise=TRUE}
+shallow <- shallow %>%     # Ceci c'est un pipe. ;)
+  mutate(
+    long_RT = RT >= 1000
+  )
+```
+
+Woah! A lot of new stuff going on.
+Let's unpack it.
+
+This time we have saved the output of `mutate()` back into `shallow` using the assignment symbol `<-`, so that we can use the new column in further code.
+In other words, we have overwritten `shallow` with the mutated data frame.
+
+Then we use `mutate()` to create a new column called `long_RT`.
+
+Note that the name of the new column is followed by *one* equal sign `=`, not two `==`.
+We are not comparing objects, but creating one.
+
+We are telling `mutate()` to fill the new column with `TRUE` if `RT` **is greater than or equal to** `1000` ms, with `FALSE` if `RT` **is not greater than or equal to** `1000` ms.
+
+To test if `RT` is greater than or equal to `1000` ms, we are using the logical operator `>=`.
+We are comparing two objects here.
+
+Check the data now to see the new `long_RT` column.
+
+```{r long-rt-setup}
+shallow <- shallow %>%     # Ceci c'est un pipe. ;)
+  mutate(
+    long_RT = RT >= 1000
+  )
+```
+
+```{r long-rt-2, exercise=TRUE}
+shallow
+```
+
+### If, else?
+
+Sometimes you will need to create columns based on multiple criteria.
+
+There are several ways to do that, but a very common one is by using "if-else" statements.
+
+If-else statements are exactly what you think they are: **if** X is true, do A; **else** if false, do B.
+
+The following code will return `short` if the RTs are smaller than 1 s, otherwise it will return `long`.
+
+```{r if-else, exercise=TRUE}
+RT <- c(554, 1098, 1000, 245, 2502)
+
+ifelse(RT < 1000, "short", "long")
+```
+
+
+
+### Count occurences
+
+We can use the `count()` function to count the number of occurrences for each value of a column.
+Let's count how many trials are correct (`ACC`).
+
+`count()` takes the name of the column you want to count values in.
+
+```{r square-count, exercise=TRUE, exercise.setup="square"}
+pyramids %>%
+  count(square)
+```
+
+Now let's create a new column called `mudbrick`.
+The column should have `TRUE` if `Material` is `Mudbrick`, `FALSE` otherwise.
+
+```{r material, exercise=TRUE}
+pyramids <- pyramids %>%
+  mutate(
+    ...
+  )
+```
+
+```{r mud-count-setup, echo=FALSE}
+pyramids <- pyramids %>%
+  mutate(
+    square = Base1 == Base2,
+    mudbrick = Material == "Mudbrick"
+  )
+```
+
+And now count how many pyramids are build with mudbrick.
+
+```{r mud-count, exercise=TRUE}
+pyramids %>%
+  ...
+```
+
+<div id="mud-count-hint">
+**Hint:** Use the `count()` function.
+</div>
+
+
+## Select
+
+What if you only want some columns? Use the `select()` function from dplyr.
+
+`select()` takes a list of unquoted column names (i.e. the bare names, without quotes `"`) separated by commas.
+
+```{r select, exercise=TRUE}
+pyramids %>%
+  select(Pharaoh, Site)
+```
+
+To remove one or more columns, prefix the column name with `-` (minus). All the other columns will be kept.
+
+```{r deselect, exercise=TRUE, exercise.setup="mud-count-setup"}
+pyramids %>%
+  select(-square, -mudbrick)
+```
+
+To select a range of columns you can include only the first and the last of the range, separated by `:`.
+
+```{r select-range, exercise=TRUE}
+pyramids %>%
+  select(Modern_name:Dynasty)
+```
+
+
+### You did it!
+
+Success! You completed this tutorial.
