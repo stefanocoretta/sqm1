@@ -211,7 +211,7 @@ There are several ways to do that, but a very common one is by using "if-else" s
 
 If-else statements are exactly what you think they are: **if** X is true, do A; **else** if false, do B.
 
-The following code will return `short` if the RTs are smaller than 1 s, otherwise it will return `long`.
+The following code will return `"short"` if the RTs are smaller than 1 s, otherwise it will return `"long"`.
 
 ```{r if-else, exercise=TRUE}
 RT <- c(554, 1098, 1000, 245, 2502)
@@ -219,73 +219,90 @@ RT <- c(554, 1098, 1000, 245, 2502)
 ifelse(RT < 1000, "short", "long")
 ```
 
+Now we can use the `ifelse()` function to create a new column in `shallow`.
+
+The new column, called `accuracy` should have `"incorrect"` if the `ACC` value is `0`, else it should be `"correct"`.
+Fill in the following chunk with the right code.
+
+```{r if-else-acc, exercise=TRUE}
+shallow <- shallow %>%
+  mutate(
+    accuracy = ...
+  )
+
+shallow
+```
+
+<div id="if-else-acc-hint">
+Remember, to check if two objects are **equal** you need the `==` operator.
+</div>
+
 
 
 ### Count occurences
 
 We can use the `count()` function to count the number of occurrences for each value of a column.
-Let's count how many trials are correct (`ACC`).
+Let's count how many trials are correct (`accuracy`).
 
 `count()` takes the name of the column you want to count values in.
 
-```{r square-count, exercise=TRUE, exercise.setup="square"}
-pyramids %>%
-  count(square)
-```
-
-Now let's create a new column called `mudbrick`.
-The column should have `TRUE` if `Material` is `Mudbrick`, `FALSE` otherwise.
-
-```{r material, exercise=TRUE}
-pyramids <- pyramids %>%
+```{r count-corr-setup}
+shallow <- shallow %>%
   mutate(
-    ...
+    accuracy = ifelse(ACC == 0, "incorrect", "correct")
   )
 ```
 
-```{r mud-count-setup, echo=FALSE}
-pyramids <- pyramids %>%
+
+```{r count-corr, exercise=TRUE, exercise.setup="square"}
+shallow %>%
+  count(accuracy)
+```
+
+You can add multiple columns to get counts for the combinations of values of each column.
+
+Try to get counts of accuracy and `Group`.
+
+```{r count-corr-multi-setup}
+shallow <- shallow %>%
   mutate(
-    square = Base1 == Base2,
-    mudbrick = Material == "Mudbrick"
+    accuracy = ifelse(ACC == 0, "incorrect", "correct")
   )
 ```
 
-And now count how many pyramids are build with mudbrick.
-
-```{r mud-count, exercise=TRUE}
-pyramids %>%
-  ...
+```{r count-corr-multi, exercise=TRUE}
+shallow %>%
+  count(...)
 ```
 
 <div id="mud-count-hint">
-**Hint:** Use the `count()` function.
+In `count()`, include the names of the two columns you want to get counts of, separated by commas.
 </div>
 
 
 ## Select
 
-What if you only want some columns? Use the `select()` function from dplyr.
+What if you only want some columns? Use the `select()` function.
 
 `select()` takes a list of unquoted column names (i.e. the bare names, without quotes `"`) separated by commas.
 
 ```{r select, exercise=TRUE}
-pyramids %>%
-  select(Pharaoh, Site)
+shallow %>%
+  select(Group, Relation_type)
 ```
 
 To remove one or more columns, prefix the column name with `-` (minus). All the other columns will be kept.
 
 ```{r deselect, exercise=TRUE, exercise.setup="mud-count-setup"}
-pyramids %>%
-  select(-square, -mudbrick)
+shallow %>%
+  select(-List, -RT)
 ```
 
 To select a range of columns you can include only the first and the last of the range, separated by `:`.
 
 ```{r select-range, exercise=TRUE}
-pyramids %>%
-  select(Modern_name:Dynasty)
+shallow %>%
+  select(logRT:Brancing)
 ```
 
 
