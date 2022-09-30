@@ -1,8 +1,8 @@
 Package: sqmf
 Type: Package
 Title: Statistics and Quantitative Methods (Frequentist)
-Version: 1.1.1
-Date: 2022-09-27
+Version: 1.1.1.9000
+Date: 2022-09-30
 Authors@R: person("Stefano", "Coretta",
                   email = paste0("stefano.coretta", "@", "gmail.com"),
                   role = c("aut", "cre"),
