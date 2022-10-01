@@ -92,7 +92,7 @@ Then subtract 1 from it.
 
 We can assign more than a value to a variable, as long as they are all of the same type (like numeric or a string).
 
-```{r combine, echo=FALSE}
+```{r Q-combine, echo=FALSE}
 question(
   "Which of the following functions can be used to assign multiple values to a variable?",
   answer("`cat()`"),
@@ -106,6 +106,8 @@ Now create a variable `houses` with the values `"Gryffindor", "Slytherin", "Huff
 
 ```{r houses, exercise=TRUE}
 houses <- ...
+
+houses
 ```
 
 ### Re-use variables
@@ -113,7 +115,7 @@ houses <- ...
 Oops! We forgot one Hogwarts house.
 Let's fix that!
 
-```{r extra, echo=FALSE}
+```{r Q-extra, echo=FALSE}
 question(
   "Which of the following lines of code let us add an extra value to `houses`?",
   answer('`houses <- c(houses, "Ravenclaw")`', correct = TRUE),
@@ -124,13 +126,19 @@ question(
 
 Now write the code here and run it to add the missing house!
 
+```{r missing-setup}
+houses <- c("Gryffindor", "Slytherin", "Hufflepuff")
+```
+
 ```{r missing, exercise=TRUE}
 houses ...
+
+houses
 ```
 
 ## Functions
 
-```{r function, echo=FALSE}
+```{r Q-function, echo=FALSE}
 question(
   "Which of the following is true?",
   answer("A function needs at least one argument."),
@@ -152,7 +160,7 @@ sum(fish) / length(fish)
 mean(fish)
 ```
 
-```{r length, echo=FALSE}
+```{r Q-length, echo=FALSE}
 question(
   "What does the `lenght()` function do?",
   answer("It calculates the sum of the numbers in the variable."),

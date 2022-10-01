@@ -1,5 +1,5 @@
 ---
-title: "04 Transform data"
+title: "SQM 03 - Transform data"
 output: 
   learnr::tutorial:
     progressive: true
@@ -63,7 +63,7 @@ filter(
 
 The code above filters the rows of the `shallow` data frame so that only the rows where `Critical_Filler` equals (`==`) `"Critical"` are returned.
 
-```{r q-n-crit, echo=FALSE}
+```{r Q-n-crit, echo=FALSE}
 question(
   "How many critical trials are there in the tibble?",
   answer("6500"),
@@ -134,7 +134,7 @@ shallow %>%
   )
 ```
 
-```{r q-multi-filt, echo=FALSE}
+```{r Q-multi-filt, echo=FALSE}
 question(
   "Which of the following statements is correct?",
   answer("There are 10 observations that are critical trials and in which the reaction times are greater than 1000 ms."),
