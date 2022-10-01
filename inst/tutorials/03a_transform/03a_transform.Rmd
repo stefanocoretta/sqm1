@@ -309,3 +309,5 @@ shallow %>%
 ### You did it!
 
 Success! You completed this tutorial.
+
+Now go through the tutorial `03b_lm_basics`!
