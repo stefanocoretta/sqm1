@@ -2,6 +2,10 @@
 
 * Add `03a_transform` tutorial.
 
+* Add `03b_lm_basics` tutorial.
+
+* Fix error in `01_r_basics` when is asked to add the missing house to `houses`.
+
 
 
 
