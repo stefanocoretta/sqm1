@@ -162,7 +162,7 @@
 #'     \item{Subject}{Subject unique identifier.}
 #'     \item{Item}{Word.}
 #'     \item{IsWord}{Whether it is a real word or a nonce word.}
-#'     \item{PhonLev}{Phoneme Levenstein Distance.}
+#'     \item{PhonLev}{Mean phoneme-level Levenshtein distance.}
 #'     \item{RT}{Reaction times (ms).}
 #'     \item{ACC}{Accuracy of lexical decision.}
 #'     \item{RT_log}{Logged reaction times.}
