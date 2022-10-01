@@ -1,0 +1,123 @@
+---
+title: "SQM 03 - Linear Model Basics"
+output: 
+  learnr::tutorial:
+    progressive: true
+    allow_skip: true
+runtime: shiny_prerendered
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+knitr::opts_chunk$set(echo = FALSE)
+library(sqmf)
+library(tidyverse)
+data("mald_1_1")
+data("polite")
+data("dur_ita_pol")
+```
+
+## Does phoneme-level distance affect reaction times?
+
+### The MALD data
+
+We will use `mald_1_1` (made available through the sqmf package), which contains data from a lexical decision task.
+
+We want to know if phoneme-level distance (`PhonLev`, i.e. Levenshtein distance) affect the reaction times of respondents when they need to decide whether the word they heard is a real word or a nonce word.
+
+Here's what the data looks like.
+
+```{r mald, exercise=TRUE}
+mald_1_1
+```
+
+### Phoneme-level distance vs reaction times
+
+Let's start by plotting phoneme-level distance (`PhonLev`) vs reaction times (`RT`).
+
+You want to use a *scatter plot*.
+
+```{r mald-plot, exercise=TRUE}
+mald_1_1 %>%
+  ...
+```
+
+<div id="mald-plot-hint">
+A **scatter plot** is a plot with continuous variables in the *x* and *y* axes.
+</div>
+
+### Model distance vs RTs
+
+Now we can run a simple linear model to investigate the relationship between phoneme-level distance and reaction times.
+
+Fill in the following code with the right formula.
+
+```{r mald-lm, exercise=TRUE}
+lm_1 <- lm(..., data = mald_1_1)
+```
+
+And now look at the model summary!
+
+```{r mald-summary-setup}
+lm_1 <- lm(RT ~ PhonLev, data = mald_1_1)
+```
+
+```{r mald-summary, exercise=TRUE}
+...
+```
+
+```{r mald-summary-hint}
+summary(...)
+```
+
+### Does phoneme-level distance affect reaction times?
+
+Great! Now that you have seen the model summary, answer the following questions.
+
+```{r Q-lm-1-1, echo=FALSE}
+question(
+  "Which of the following statements is correct?",
+  answer('The mean RT is 771.2 ms.'),
+  answer('The model intercept is 33.7 ms.'),
+  answer('When distance is 33.7, the average reaction time is 771.2 ms.'),
+  answer('On average, the reaction time is 771.2 ms, when distance is 0.', correct = TRUE),
+  correct = "Correct!",
+  incorrect = "Nope!"
+)
+```
+
+```{r Q-lm-1-2, echo=FALSE}
+question(
+  "The effect of `PhonLev` on `RT` is",
+  answer('positive.', correct = TRUE),
+  answer('negative.'),
+  answer('zero.'),
+  answer('3.4 ms.'),
+  correct = "Correct! The sign of the effect is `+`, so the effect is positive.",
+  incorrect = "Nope!"
+)
+```
+
+```{r Q-lm-1-3, echo=FALSE}
+question(
+  "Which of the following statements is correct?",
+  answer('When the intercept is 0, phoneme-level distance is 33.7.'),
+  answer('For every unit increase of phoneme-level distance, there is an increase of 33.7 ms.', correct = TRUE),
+  answer('When phoneme-level distance is 0, the reaction time is 33.7 ms.'),
+  answer('For every 1 ms, the phoneme-level distance increases by 33.7.'),
+  correct = "Correct!",
+  incorrect = "Nope!"
+)
+```
+
+```{r Q-lm-1-4, echo=FALSE}
+question(
+  "What is the effect of phoneme-level distance when the distance is 3?",
+  answer('101.1 ms.', correct = TRUE),
+  answer('0 ms.'),
+  answer('33.7 ms.'),
+  answer('3.4 ms.'),
+  correct = "Correct! To get the effect when distance is 3, you just do `33.7 * 3`.",
+  incorrect = "Nope!"
+)
+```
