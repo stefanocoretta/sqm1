@@ -307,3 +307,52 @@ Feel free to share your answers and/or doubts on Piazza!
 3. Interpreting the estimated intercept (76.6 ms) is counterintuitive, because in this model closure duration is measured as syllables per second. Can you explain why?
 
 4. If closure duration is 50 ms, which is the predicted duration of a vowel?
+
+
+## Reporting
+
+### You have being initiated to the world of linear modelling!
+
+Hopefully you have now grasped the main basic aspects of linear models with a continuous predictor and a continuous outcome variable and you are now comfortable with interpreting the output of the model summaries.
+
+But how would you go about reporting these models in a paper?
+Nothing easier!
+
+There is a standard way of reporting results from linear models.
+The following sections will show you how each of the three models above can be reported.
+Note that I tried to vary the way things are reported, but they are just all variations of the same standard approach to reporting.
+
+For now we will only report estimates and standard errors, while we will include further information later on in the course.
+In these examples I am being quite verbose, so in a real-world scenario you might want to strip reporting to a minimum, especially with more complex models (we will see examples later on).
+Don't worry about any of this for the time being.
+
+### Example 1
+
+We fitted a linear model to reaction times, with Levenshtein distance as the only predictor.
+
+The estimated intercept is 771 ms (SE = 24.85).
+In other words, when Levenshtein distance is 0, the mean reaction time is 771 ms.
+According to the model, Levenshtein distance increases reaction times by about 34 ms for each unit increase (SE = 3.45).
+
+### Example 2
+
+To investigate the effect of articulation rate on mean intensity, we ran a linear model with mean intensity as the outcome and articulation rate as the predictor.
+
+Based on the model, the average intensity when articulation rate is 0 is about 62 dB (SE = 1.32).
+For every increase of 1 syllable per second, intensity is lowered by -0.01 dB (SE = 0.19), which we interpret as being practically 0.
+In summary, the model suggests that articulation rate does not affect mean intensity.
+
+### Example 3
+
+We fitted a linear model to investigate the relationship between consonanant closure duration and the duration of preceding vowels.
+
+When closure duration is 0 ms, the expected duration of preceding vowels is about 77 ms (SE = 4.69).
+For every 1 ms increase in closure duration, the predicted vowel duration decreases by -0.16 ms (SE = 0.07).
+In other words, closure duration has a negative effect on vowel duration.
+To illustrate the effect of closure duration, let' take a closure duration of 50 ms: according to the model, when closure duration is 50 ms, vowels are expected to be about 69 ms long.
+
+### That's all folks (for now)!
+
+Congratulations! You completed the third tutorial.
+
+Now take a break and recharge, then keep calm and do what you do best.
