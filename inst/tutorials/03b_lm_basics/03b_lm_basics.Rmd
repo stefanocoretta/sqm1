@@ -17,7 +17,7 @@ data("polite")
 data("dur_ita_pol")
 ```
 
-## Does phoneme-level distance affect reaction times?
+## Example 1: `mald_1_1`
 
 ### The MALD data
 
@@ -121,3 +121,128 @@ question(
   incorrect = "Nope!"
 )
 ```
+
+## Example 2: `polite`
+
+### The politness data
+
+Let's move now to `polite` (made available through the sqmf package), which contains data from study of the acoustics of polite speech in Korean.
+
+Imagine we want to know, regardless of attitude (i.e. informal vs polite speech), if articulation rate (i.e. the number of syllables per second) is correlated with the mean intensity of each utterance.
+
+Here's what the data looks like.
+
+```{r polite, exercise=TRUE}
+polite
+```
+
+### Articulation rate vs intensity
+
+Let's make a plot of articulation rate vs intensity.
+
+```{r art-int-plot-1, exercise=TRUE}
+polite %>%
+  ggplot(aes(...)) +
+  geom_point() +
+  labs(x = "Articulation rate (syll/s)", y = "Mean intensity (dB)")
+```
+
+Does it look like there is something about articulation rate and intensity?
+
+Let's further check by adding another geometry to the plot.
+We can use the `geom_smooth()` geometry to add a "regression line".
+
+There are several methods available in `geom_smooth()`, but we can use the `"lm"` method to produce a regression line with confidence intervals based on a simple linear model `lm(y ~ x)` (we will talk about confidence intervals later in the course).
+
+```{r art-int-plot-2, exercise=TRUE}
+polite %>%
+  ggplot(aes(...)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = ...) +
+  labs(x = "Articulation rate (syll/s)", y = "Mean intensity (dB)")
+```
+
+
+```{r Q-art-int-plot}
+question(
+  "What does the plot suggest?",
+  answer('The higher the articulation rate, the higher the intensity.'),
+  answer('Mean intensity is the same across articulation rates.'),
+  answer('Articulation rate and intensity are not correlated.', correct = TRUE),
+  answer('Lower articulation rates correspond to lower intesity.'),
+  correct = "Correct!",
+  incorrect = "Nope!"
+)
+```
+
+### Does articulation rate correlates with intensity?
+
+It is generally not enough to use plots to make inferences about data.
+We need to model the data statistically as well.
+
+Let's run a linear model with articulation rate `articulation_rate` as a predictor and mean intensity `inmn` as the outcome. 
+Then check the model summary
+
+```{r polite-lm, exercise=TRUE}
+lm_2 <- ...
+
+# Check the model summary
+...
+```
+
+<div id="polite-lm-hint">
+Remember to also specify the data with `data = `.
+</div>
+
+```{r Q-lm-2-1}
+question(
+  "Which of the following are correct?",
+  answer('The average mean intensity is 62 dB.', correct = TRUE),
+  answer('The mean articulation rate is -0.01 syll/s.'),
+  answer('The standard error of articulation rate is smaller that the estimate.'),
+  correct = "Correct!",
+  incorrect = "Nope!"
+)
+```
+
+```{r Q-lm-2-2}
+question(
+  "Which of the following is correct?",
+  answer('Articulation rate is positively correlated with intensity.'),
+  answer('For every increase of one syllable per second in articulation rate, there is a decrease of -0.01 dB in intensity.', correct = TRUE),
+  answer('When intensity is 0, articulation rate is -0.01.'),
+  correct = "Correct!",
+  incorrect = "Nope!"
+)
+```
+
+```{r Q-lm-2-3}
+question(
+  "What is the mean intensity when articulation rate is 0??",
+  answer('We cannot know from the model.'),
+  answer('62 dB', correct = TRUE),
+  answer('0 dB.'),
+  correct = "Correct!",
+  incorrect = "Nope!"
+)
+```
+
+### What is the takeaway?
+
+Think about the following questions and answers in light of what you learnt from the course so far and from the model summary.
+
+**Q**: What is the estimated effect of articulation rate on mean intensity?
+
+**A**: The estimated effect of articulation rate on mean intensity is -0.01 dB.
+
+---
+
+**Q**: According to the model, what happens to mean intensity when articulation rate increases from 3 syll/s to 6 syll/s?
+
+**A**: According to the model, when articulation rate increases from 3 syll/s to 6 syll/s, mean intensity goes from 61.956 dB to 61.922 dB.
+
+---
+
+**Q**: Does the model indicate a correlation between articulation rate and mean intensity?
+
+**A**: The estimated effect of articulation rate on mean intensity is very small (-0.01 dB) considering the mean intensity is about 62 dB. We can say that the model suggest no correlation between articulation rate and intensity because the estimated effect is negligible.
