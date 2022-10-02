@@ -17,7 +17,7 @@ data("polite")
 data("dur_ita_pol")
 ```
 
-## Example 1: `mald_1_1`
+## Example 1: English
 
 ### The MALD data
 
@@ -122,7 +122,7 @@ question(
 )
 ```
 
-## Example 2: `polite`
+## Example 2: Korean
 
 ### The politness data
 
@@ -246,3 +246,64 @@ Think about the following questions and answers in light of what you learnt from
 **Q**: Does the model indicate a correlation between articulation rate and mean intensity?
 
 **A**: The estimated effect of articulation rate on mean intensity is very small (-0.01 dB) considering the mean intensity is about 62 dB. We can say that the model suggest no correlation between articulation rate and intensity because the estimated effect is negligible.
+
+## Example 3: Polish
+
+### The Italian and Polish vowel duration data
+
+The `dur_ita_pol` data frame contains data on vowel and consonant duration from speakers of Italian and Polish.
+
+```{r dur, exercise=TRUE}
+dur_ita_pol
+```
+
+### Consonant closure duration vs vowel duration
+
+We want to investigate the relationship between consonant closure duration and vowel duration in VC sequences of CVCV nonce words produced by Polish speakers (we will ignore the Italian data).
+
+In the chunk below, write code to do the following:
+
+1. Filter the data so that you include only data from the Polish speakers.
+2. Drop missing values of consonant closure duration `c2_clos_duration` (use the `drop_na()` function).
+3. Make a scatter plot with `c2_clos_duration` and `v2_duration`.
+
+```{r dur-plot, exercise=TRUE}
+dur_ita_pol %>%
+  ...
+```
+
+<div id="dur-plot-hint">
+You can chain multiple commands using the pipe `%>%`.
+</div>
+
+### Are closure and vowel duration correlated?
+
+Now time for a linear model!
+
+Remember to filter the data and drop NAs as you did for the plot, but this time you have to save the output to `polish_data` so that you can use it in `lm()`.
+
+Run a linear model with vowel duration as the outcome and consonant closure duration as the predictor.
+
+```{r dur-lm, exercise=TRUE}
+polish_data <- dur_ita_pol %>%
+  filter(...) %>%
+  drop_na(...)
+
+lm_3 <- lm(..., data = polish_data)
+
+summary(lm_3)
+```
+
+Excellent!
+
+Now challenge yourself and think about the following questions. Can you answer them?
+
+Feel free to share your answers and/or doubts on Piazza!
+
+1. Is it possible to tell, just by looking at the model summary, which is the average vowel duration in the data?
+
+2. Is the estimated effect of closure duration on vowel duration positive or negative? Why?
+
+3. Interpreting the estimated intercept (76.6 ms) is counterintuitive, because in this model closure duration is measured as syllables per second. Can you explain why?
+
+4. If closure duration is 50 ms, which is the predicted duration of a vowel?
