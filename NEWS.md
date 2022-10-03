@@ -1,4 +1,4 @@
-# sqmf 1.1.1.9000
+# sqmf 1.2.0
 
 * Add `03a_transform` tutorial.
 
