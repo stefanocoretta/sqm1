@@ -1,3 +1,10 @@
+# sqmf 1.2.0.9000
+
+* Add `ita_egg` data.
+
+
+
+
 # sqmf 1.2.0
 
 * Add `03a_transform` tutorial.
