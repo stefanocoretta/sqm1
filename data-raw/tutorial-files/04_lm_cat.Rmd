@@ -1,0 +1,194 @@
+---
+title: "04 - Linear model basics II"
+output: html_document
+date: "`r Sys.Date()`"
+---
+
+# Setup
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The `setup` code chunk above is a special code chunk, where you can set different options and attach packages and data.
+
+Go ahead and attach the tidyverse meta-package in the `setup` chunk.
+
+# Albanian VOT data
+
+## Read the VOT data
+
+The first thing we need to do is to read the VOT data contained in the file `alv_vot.csv`.
+
+Fill in the following code chunk with the code to read the data:
+
+- Use the `read_csv()` function.
+- You need only one argument: the (relative) path to the file (as a string).
+- Remember to assign `<-` the output of `read_csv()` to a variable (call the variable `alb_vot`).
+
+```{r read-vot}
+
+```
+
+Inspect the data.
+
+```{r vot}
+alb_vot
+```
+
+The tibble has the following columns:
+
+- `speaker`: the speaker unique ID.
+- `file`: the audio recording the measurements are taken from.
+- `label`: a custom transcription system for the consonants.
+- `release`: the time of the consonant release within the recording in seconds.
+- `voi_onset`: the time of voice onset after consonant release within the recording in seconds.
+- `consonant`: the IPA symbol of the consonant.
+
+## Prepare the data
+
+Great! The data does not contain a column with VOT values, but we can calculate it from the `release` and `voi_onset` columns.
+
+Voice Onset Time (VOT) is the duration of the interval between a stop release and the time of voice onset.
+In other words, it's the difference between `voi_onset` and `release`.
+
+Create a new column in the data called `VOT`.
+Remember which function to use to create new columns?
+
+```{r vot-vot}
+alb_vot <- alb_vot %>%
+  ...
+```
+
+Check that the new column has been created successfully (view the tibble by clicking on its name in the Environment tab of the top-right panel).
+
+The column is in seconds (because the columns are used to create it are in seconds). Maybe you want to change the values from seconds to milliseconds (i.e. multiply them by 1000)?
+
+## Plot VOT values
+
+Now we can plot VOT values.
+
+On the *x*-axis, put `label`. Use `VOT` for the *y*-axis.
+Which geometry works best for this type of plot?
+
+```{r vot-plot}
+
+```
+
+Write a brief description of the plot, as you would in a research paper.
+
+## Summarise VOT
+
+Let's learn how to summarise data with the `summarise()` and `group_by()` functions.
+
+So, the `summarise()` function takes a tibble and applies summary operations on it.
+
+For example, you can get the mean and standard deviation of VOT values easily with:
+
+```{r vot-summary}
+alb_vot %>%
+  summary(
+    mean_vot = mean(VOT),
+    sd_vot = sd(VOT)
+  )
+```
+
+The output of the `summary()` function is a tibble itself, with the created columns `mean_vot` and `sd_vot` (which contain the mean VOT and the standard deviation of VOT respectively, from the entire data frame).
+
+What if you want to get the mean and standard deviation of VOT values, but this time for each consonant in the data?
+
+Easy! You use the `group_by()` function to group the data by consonant and then you use `summary()`.
+`group_by()` takes as argument a column name (or more than one, separated by commas): for example `group_by(language)` if the data table contains a `language` column.
+
+Now fill in code where you see the `...` in the following chunk: you want to group by the `consonant` column.
+
+```{r vot-group-by}
+alb_vot %>%
+  ... %>%
+  summary(
+    mean_vot = mean(VOT),
+    sd_vot = sd(VOT)
+  ) 
+```
+
+## Model VOT
+
+Now let's run a linear model to check if the VOT in voiceless consonants is different from that of voiced consonants.
+
+But before... we need to add a column which states if a consonant is voiceless or voiced! Because the data does not have that (yet).
+
+Very easy!
+
+### Add a "voicing" column
+
+We can use `mutate()` to create a new column with `ifelse`.
+Let's call the new column `voicing`.
+Let's use the `label` column so we don't have to type IPA symbol.
+
+If `label` is any of `c(c, k, p, t, ts, tS)`, `voicing` should be `"voiceless"`, otherwise it should be `"voiced"`.
+
+Wait, what is the code for "If `label` is any of X"? We haven't seen this yet, but it's straightforward: you use the `%in%` operator.
+
+For example, run the following in the console: `"b" %in% c("a", "b", "c")`.
+It should return `TRUE`: the code asks if `"b"` is found `%in%` (in other words, among the items of) the vector `c("a", "b", "c")`.
+
+So you can check, for each row of the `label` column, if the value of that row is `"%in%"` any of `c(c, k, p, t, ts, tS)`.
+When the answer is `TRUE` then `voicing` will be `"voiceless"`, otherwise `"voiced"`.
+
+Now, complete the following code to create a `voicing` column.
+
+```{r vot-voicing}
+alb_vot <- alb_vot %>%
+  mutate(
+    voicing = ifelse(..., ..., ...)
+  )
+```
+
+### Run the linear model
+
+Now that we have the column `voicing`, we can run a linear model to answer the question: Is there a difference in VOT between voiced vs voiceless consonants?
+
+```{r vot-lm}
+vot_lm <- lm(..., data = alb_vot)
+```
+
+Now inspect the model summary:
+
+```{r vot-lm-summary}
+summary(vot_lm)
+```
+
+### Model description
+
+Write here a paragraph that describes the model specification: e.g. what kind of model? which outcome variable? which predictor? what are the levels of the predictor?.
+
+...
+
+### Results
+
+Write here a brief report of the results from the model.
+
+...
+
+
+
+
+# Pupillometry data
+
+Great work!
+
+Now, why don't you try all that yourself but with the pupillometry data you downloaded in `data/`?
+
+Skim the introduction of the paper that describes the study to understand the data: <https://doi.org/10.3758/s13423-021-01991-0>.
+
+Imagine you want to answer the following question: *Does condition (sparse vs dense) affect the width of pupil during a word-recognition task?*
+
+Here's a few steps to guide you:
+
+1. The data contains pupillometry widths from a time window of several seconds, but you want to analyse data only from the time window between 0 and 1600 ms. Filter the data so that you include only data from that time window.
+
+2. The data contains the time-changing pupil width from several participants and several trials. You want to plot the time-changing pupil width as lines, one per participant/trial. To know how, check <https://r4ds.had.co.nz/data-visualisation.html#geometric-objects>, where it talks about the `group` aesthetic.
+
+3. Now to model the data, we need to extract one value of pupil width from each trial in the data, because we cannot analyse the entire time-changing data (we would need another type of models for that type of data). You can filter the data so that you get only the maximum value of pupil width from within each trial.
+
+4. Now that you have one pupil width value per trial, you can run a linear model to see if `Condition` affects pupil width.
