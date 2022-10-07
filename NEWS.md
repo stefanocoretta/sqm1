@@ -1,6 +1,8 @@
-# sqmf 1.2.0.9000
+# sqmf 1.3.0
 
 * Add `ita_egg` data.
+
+* Add week 4 tutorial files.
 
 
 
