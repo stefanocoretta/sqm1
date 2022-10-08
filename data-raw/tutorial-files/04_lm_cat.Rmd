@@ -158,6 +158,47 @@ Now inspect the model summary:
 summary(vot_lm)
 ```
 
+### Get predicted means of voiced and voiceless VOT.
+
+The model summary returns the estimated coefficients of the model (the betas).
+
+These coefficients are not always intuitive. In this model:
+
+- The estimated coefficient of the intercept is the mean VOT when `voicing` is at the reference level (here, it is `"voiced"`).
+- The estimated coefficient of `voicing = voiceless` is the **difference** between the mean VOT when `voicing` is `"voiceless"` and the intercept.
+
+But what if you want to know the mean VOT when `voicing` is `"voiced"` **and** when it is `"voiceless"`?
+
+To answer that question you need to obtain the **predicted means** of the two levels of `voicing`.
+
+You can get the predicted means with the `ggpredict()` function from the [ggeffects](https://strengejacke.github.io/ggeffects/) package:
+
+1. Install the ggeffects package (you can install it in the usual way, or go to the Packages tab in the bottom-right panel of RStudio and click on Install, then follow the instructions in the window that shows up).
+
+2. Add `library(ggeffects)` in the `setup` chunk, at the top of this document.
+
+3. Run the setup chunk to attach the ggeffects package.
+
+Now get the predicted means with the following code:
+
+```{r vot-lm-preds}
+ggpredict(vot_lm, terms = "voicing")
+```
+
+Look carefully at the output.
+
+### Plot the model output
+
+The `ggpredict()` function can also be used to plot the model output.
+
+It's easy! Just pipe `%>%` the output of the function to `plot()`.
+
+```{r vot-lm-preds-plot}
+ggpredict(vot_lm, terms = "voicing") %>% plot()
+```
+
+Does the plot makes sense in light of the output of `ggpredict()` above?
+
 ### Model description
 
 Write here a paragraph that describes the model specification: e.g. what kind of model? which outcome variable? which predictor? what are the levels of the predictor?.
