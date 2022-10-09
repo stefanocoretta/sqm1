@@ -19,10 +19,7 @@ shallow <- read_csv("https://raw.githubusercontent.com/stefanocoretta/quick-line
 ## The data
 
 For this tutorial, we will use the data from this paper: <https://doi.org/10.1017/S0272263120000170>.
-
-> The present study tests the Shallow Structure Hypothesis (SSH), which claims that compared to L1 processing, L2 language processing generally underuses grammatical information, prioritizing nongrammatical information. Specifically, this cross-modal priming study tests SSH at the level of morphology, investigating whether late advanced L2 learners construct hierarchically structured representations for trimorphemic derived words during real-time processing as native speakers do. Our results support SSH. In lexical decision on English trimorphemic words (e.g., unkindness or [[un-[kind]]-ness]), L1 recognition of the targets was facilitated by their bimorphemic morphological-structural constituent primes (e.g., unkind), but not by their bimorphemic nonconstituent primes (e.g., kindness), which were only semantically and formally related to the target. In contrast, L2 recognition was equally facilitated by both constituent and nonconstituent primes. These results suggest that unlike L1 processing, L2 processing of multimorphemic words is not mainly guided by detailed morphological structure, overrelying on nonstructural information.
-
-For more information, check the paper.
+Read the abstract for an overview. For more information, read the introduction and methods sections.
 
 Here's the raw data (I have imported the data for you. You will learn how to import data in Week 4).
 
@@ -108,13 +105,16 @@ Logical operators return a "logical", i.e. either `TRUE` or `FALSE`.
 ```
 
 Try the logical operators out! Fill in the following code so that you get TRUE in the first 3 comparisons and FALSE in the last 3.
+Substitute the `...` with numbers, strings, operators so that the statements return `TRUE` or `FALSE`
 
 ```{r logic-ex, exercise=TRUE, eval=FALSE}
+# Use numbers or strings.
 # These should return `TRUE`
 ... < 20
 "a" == ...
 "apple" != ...
 
+# Use operators.
 # These should return `FALSE`
 "zoo" ... "park"
 120 ... 43
@@ -172,6 +172,8 @@ shallow <- shallow %>%     # Ceci c'est un pipe. ;)
   mutate(
     long_RT = RT >= 1000
   )
+
+shallow
 ```
 
 Woah! A lot of new stuff going on.
@@ -189,19 +191,6 @@ We are telling `mutate()` to fill the new column with `TRUE` if `RT` **is greate
 
 To test if `RT` is greater than or equal to `1000` ms, we are using the logical operator `>=`.
 We are comparing two objects here.
-
-Check the data now to see the new `long_RT` column.
-
-```{r long-rt-setup}
-shallow <- shallow %>%     # Ceci c'est un pipe. ;)
-  mutate(
-    long_RT = RT >= 1000
-  )
-```
-
-```{r long-rt-2, exercise=TRUE}
-shallow
-```
 
 ### If, else?
 
@@ -237,7 +226,11 @@ shallow
 Remember, to check if two objects are **equal** you need the `==` operator.
 </div>
 
+Note that `>` and `<` mean "greater than" and "less than".
+This means that `1000 < 1000` is `FALSE`.
 
+The operators `>=` and `<=` mean "greater than or equal to" and "less than or equal to".
+So `1000 <= 1000` returns `TRUE`.
 
 ### Count occurences
 
@@ -246,15 +239,12 @@ Let's count how many trials are correct (`accuracy`).
 
 `count()` takes the name of the column you want to count values in.
 
-```{r count-corr-setup}
+```{r count-corr}
 shallow <- shallow %>%
   mutate(
     accuracy = ifelse(ACC == 0, "incorrect", "correct")
   )
-```
 
-
-```{r count-corr, exercise=TRUE, exercise.setup="square"}
 shallow %>%
   count(accuracy)
 ```
@@ -263,19 +253,7 @@ You can add multiple columns to get counts for the combinations of values of eac
 
 Try to get counts of accuracy and `Group`.
 
-```{r count-corr-multi-setup}
-shallow <- shallow %>%
-  mutate(
-    accuracy = ifelse(ACC == 0, "incorrect", "correct")
-  )
-```
-
-```{r count-corr-multi, exercise=TRUE}
-shallow %>%
-  count(...)
-```
-
-<div id="mud-count-hint">
+<div id="count-corr-hint">
 In `count()`, include the names of the two columns you want to get counts of, separated by commas.
 </div>
 
@@ -302,7 +280,7 @@ To select a range of columns you can include only the first and the last of the 
 
 ```{r select-range, exercise=TRUE}
 shallow %>%
-  select(logRT:Brancing)
+  select(logRT:Branching)
 ```
 
 

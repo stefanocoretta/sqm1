@@ -1,3 +1,11 @@
+# sqmf 1.3.2
+
+* Fixed issues in week 3 tutorials.
+
+
+
+
+
 # sqmf 1.3.1
 
 * Add ggeffects exercise to week 4 tutorial.

@@ -51,22 +51,15 @@ A **scatter plot** is a plot with continuous variables in the *x* and *y* axes.
 Now we can run a simple linear model to investigate the relationship between phoneme-level distance and reaction times.
 
 Fill in the following code with the right formula.
+Then check the model summary.
 
 ```{r mald-lm, exercise=TRUE}
 lm_1 <- lm(..., data = mald_1_1)
-```
 
-And now look at the model summary!
-
-```{r mald-summary-setup}
-lm_1 <- lm(RT ~ PhonLev, data = mald_1_1)
-```
-
-```{r mald-summary, exercise=TRUE}
 ...
 ```
 
-```{r mald-summary-hint}
+```{r mald-lm-hint}
 summary(...)
 ```
 
@@ -138,7 +131,7 @@ polite
 
 ### Articulation rate vs intensity
 
-Let's make a plot of articulation rate vs intensity.
+Let's make a plot of articulation rate `articulation_rate` vs intensity `inmn`.
 
 ```{r art-int-plot-1, exercise=TRUE}
 polite %>%
@@ -160,6 +153,10 @@ polite %>%
   geom_point(alpha = 0.5) +
   geom_smooth(method = ...) +
   labs(x = "Articulation rate (syll/s)", y = "Mean intensity (dB)")
+```
+
+```{r art-int-plot-2-hint}
+geom_smooth(method = "lm")
 ```
 
 
@@ -197,7 +194,7 @@ Remember to also specify the data with `data = `.
 ```{r Q-lm-2-1}
 question(
   "Which of the following are correct?",
-  answer('The average mean intensity is 62 dB.', correct = TRUE),
+  answer('The average mean intensity is 62 dB when articulation rate is 0.', correct = TRUE),
   answer('The mean articulation rate is -0.01 syll/s.'),
   answer('The standard error of articulation rate is smaller that the estimate.'),
   correct = "Correct!",
@@ -300,11 +297,11 @@ Now challenge yourself and think about the following questions. Can you answer t
 
 Feel free to share your answers and/or doubts on Piazza!
 
-1. Is it possible to tell, just by looking at the model summary, which is the average vowel duration in the data?
+1. Does the model summary allow you to know which is the average vowel duration in the raw data?
 
 2. Is the estimated effect of closure duration on vowel duration positive or negative? Why?
 
-3. Interpreting the estimated intercept (76.6 ms) is counterintuitive, because in this model closure duration is measured as syllables per second. Can you explain why?
+3. The interpretation of the estimated intercept (76.6 ms) is a bit counter-intuitive, because closure duration included in the model. Can you explain why?
 
 4. If closure duration is 50 ms, which is the predicted duration of a vowel?
 
