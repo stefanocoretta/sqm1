@@ -5,7 +5,7 @@
 
 <!-- badges: start -->
 
-[![](https://img.shields.io/badge/devel%20version-1.3.2-orange.svg)](https://github.com/stefanocoretta/sqmf)
+[![](https://img.shields.io/badge/devel%20version-1.4.0-orange.svg)](https://github.com/stefanocoretta/sqmf)
 <!-- badges: end -->
 
 Welcome to the main site of the course *Statistics and Quantitative
@@ -55,7 +55,7 @@ lines in the `Console` in RStudio and press ENTER):
 
 ``` r
 install.packages("remotes")
-remotes::install_github("stefanocoretta/sqmf")
+remotes::install_github("stefanocoretta/sqmf@1.4.0")
 ```
 
 You will see some text flashing and if it ends in `DONE (sqmf)` then

@@ -1,3 +1,9 @@
+# sqmf 1.4.0
+
+* Add data for FT2.
+
+
+
 # sqmf 1.3.2
 
 * Fixed issues in week 3 tutorials.
