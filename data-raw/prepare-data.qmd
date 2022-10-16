@@ -135,6 +135,7 @@ shallow <- read_csv("https://raw.githubusercontent.com/stefanocoretta/quick-line
   select(-ACC, RT_log = logRT)
 
 usethis::use_data(shallow, overwrite = TRUE)
+write_csv(shallow, here("./data-raw/tutorials/week-5-tutorial-files/shallow.csv"))
 ```
 
 ## Italian EGG
@@ -180,4 +181,17 @@ ft1_data <- read_csv("https://osf.io/download/vaujp/?view_only=edba6a2255044ce6a
   )
 
 usethis::use_data(ft1_data, overwrite = TRUE)
+```
+
+### FT2: Linear models
+
+```{r}
+download.file(
+  "https://github.com/cran/languageR/raw/master/data/english.rda",
+  here("data-raw/assessments/ft2/english.rda")
+)
+
+load(here("data-raw/assessments/ft2/english.rda"))
+
+write_csv(english, here("data-raw/assessments/ft2/english.csv"))
 ```

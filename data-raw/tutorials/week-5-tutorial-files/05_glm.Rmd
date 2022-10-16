@@ -1,0 +1,136 @@
+---
+title: "05 - Linear models: Discrete outcomes"
+output: html_document
+date: "2022-10-18"
+---
+
+# Setup
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(here)
+knitr::opts_knit$set(root.dir = here())
+
+library(tidyverse)
+```
+
+We have talked last week about working directories.
+The working directory of an RStudio project is always the main folder of the project.
+
+When you render Rmarkdown files by clicking on the `Knit` button above, however, the working directory is temporarily changed to the folder that contains the Rmarkdown file.
+
+In order to be able to run code in the Rmarkdown interactively, while using relative paths and also being able to render the file, we need to tell knitr (the package that is behind the rendering process) to use as the working directory the project's working directory.
+
+This is what he code `knitr::opts_knit$set(root.dir = here::here())` does:
+
+- `root.dir` is the working directory used to render the Rmarkdown file.
+- `here()`, from the here package, returns the project's working directory (so that you don't have to write a path yourself).
+
+# Shallow morphological parsing
+
+## Read the data
+
+Now, read the `shallow.csv` data.
+
+This is data from **Song et al. 2020**, Second language users exhibit shallow morphological processing, *Studies in Second Language Acquisition*, 42(5), 1121-1136 (<https://doi.org/10.1017/S0272263120000170>).
+
+```{r shallow}
+shallow <- ...
+
+shallow
+```
+
+## Let's talk about factors
+
+So far we have mainly used R variables that are either numeric or a string (i.e. "character").
+
+These are called `classes` in R.
+
+```{r classes}
+class(1)
+class(4.765)
+class("Am I what?")
+```
+
+There is another class of objects in R, called *factors*.
+
+Factors are special types of string objects that allow you to set "levels": think of these as the R equivalent of categorical variables, like accuracy, place of articulation, etc...
+
+You can create a factor from a character vector with the `factor()` function.
+(Remember, a vector is a fancy name for a variable that contains many items of the same type)
+
+```{r facts}
+# This is a character vector
+char_vect <- c("c", "b", "a", "a", "b", "c", "c", "a")
+char_vect
+
+# Now we make a factor vector or simply "factor"
+fact_vect <- factor(char_vect)
+fact_vect
+```
+
+You see that when you print `fact_vect`, the *levels* (or categories) of the factor are displayed.
+
+The levels of factors are ordered alphabetically by default (do you remember when we talked about the "reference level" of discrete predictors in linear models? Here's where that comes from! Discrete predictors are converted to factors under the hood.)
+
+But what if you want a different order? Easy! You can specify the order of the levels in the `factor()` function.
+
+For example, `accuracy` contains two categories `correct` and `incorrect`.
+
+This means that, when `accuracy` is converted to a factor, the default order of the levels will be `correct, incorrect`.
+
+```{r fact-levels}
+# We can extract columns from data frames with the dollar sign $
+factor(shallow$accuracy) %>%
+  # The following just shows the first 10 items
+  head(10)
+```
+
+See?
+
+Let's see how to change that.
+
+```{r fact-levels-2}
+factor(shallow$accuracy, levels = c("incorrect", "correct")) %>%
+  head(10)
+```
+
+Now the levels are ordered as `incorrect, correct`.
+
+Let's mutate the data now so that we can set the levels order in `accuracy` and use it in a linear model later.
+
+We do this so that the model estimates will tell us about the probability of obtaining a `correct` response (i.e. the **second** level!). 
+
+Fill in the code below to mutate `shallow`
+
+```{r accuracy-levels}
+shallow <- shallow %>%
+  mutate(
+    accuracy = factor(accuracy, levels = c(...))
+  )
+```
+
+Fantastic!
+
+## Plot the data
+
+Now plot the `accuracy` column.
+
+Create at least three different plots to answers questions like:
+
+- What is the distribution of `correct` vs `incorrect` responses?
+- Does `Relation_type` affect the distribution of `accuracy`?
+- What about `Branching`?
+
+```{r accuracy-plot-1}
+
+```
+
+```{r accuracy-plot-2}
+
+```
+
+```{r accuracy-plot-3}
+
+```
+
