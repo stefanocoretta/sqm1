@@ -53,11 +53,10 @@ These are divided between **assessments due on Mondays (FM)** and **assessments 
 #### Formative assessments due on Thursdays (noon)
 
 - **FT1 (Week 3)**: Data viz.
-- **FT2 (Week 5)**: Linear model report.
-- **FT3 (Week 7)**: Data wrangle + simple modelling.
-- **FT4 (Week 9)**: Modelling.
+- **FT2 (Week 6)**: Linear model report.
+- **FT3 (Week 9)**: Data analysis.
 
-If you feel that all 9 formative assessments are too much, then you can choose to submit only the Thursday's formative assessments.
+If you feel that all 8 formative assessments are too much, then you can choose to submit only the Thursday's formative assessments.
 
 ## Summative assessment
 
@@ -78,4 +77,4 @@ You will be given a data set and you will have to:
 
 You will submit this assessment in the form of a lab report.
 
-More information will be released in due course
+More information will be released in due course.
