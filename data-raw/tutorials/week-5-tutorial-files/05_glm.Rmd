@@ -116,7 +116,7 @@ Fantastic!
 
 Now plot the `accuracy` column.
 
-Create at least three different plots to answers questions like:
+Create at least three different plots to answer questions like:
 
 - What is the distribution of `correct` vs `incorrect` responses?
 - Does `Relation_type` affect the distribution of `accuracy`?
@@ -134,3 +134,48 @@ Create at least three different plots to answers questions like:
 
 ```
 
+## Model the data
+
+Run a linear model with a `binomial` family (aka logistic regression or binomial regression) with `accuracy` as the outcome variable.
+
+Include the following predictors: `Relation_type` and `Branching`.
+
+```{r shallow-lm}
+shallow_lm <- glm(
+  # example: outcome ~ predictor_1 + predictor_2
+  ... ~ ...,
+  data = shallow,
+  family = binomial()
+)
+```
+
+Check the model summary.
+
+```{r shallow-lm-summary}
+
+```
+
+Now get the predicted probabilities of obtaining a `correct` response depending on the two predictors.
+
+```{r shallow-lm-pred}
+ggpredict(shallow_lm, terms = c(...))
+```
+
+And finally, plot it.
+
+```{r shallow-lm-pred-plot}
+ggpredict(shallow_lm, terms = c(...)) %>%
+  plot()
+```
+
+## Report the model and results
+
+Write here a report of the model specification and the results.
+
+
+
+
+
+# Now render your Rmd file!
+
+Click on the "Knit" button and render this file to an HTML page!
