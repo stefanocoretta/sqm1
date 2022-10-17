@@ -22,7 +22,7 @@ Here you can find the slides of lectures and workshops.
 | 2 | [Lecture](https://stefanocoretta.github.io/sqmf-slides/week-02/lecture/)  | [Workshop](https://stefanocoretta.github.io/sqmf-slides/week-02/workshop/)  |
 | 3 | [Lecture](https://stefanocoretta.github.io/sqmf-slides/week-03/lecture/)  | [Workshop](https://stefanocoretta.github.io/sqmf-slides/week-03/workshop/)  |
 | 4 | [Lecture](https://stefanocoretta.github.io/sqmf-slides/week-04/lecture/) | [Workshop](https://stefanocoretta.github.io/sqmf-slides/week-04/workshop/) |
-| 👉 5 | [Lecture](https://stefanocoretta.github.io/sqmf-slides/week-05/lecture/) | |
+| 👉 5 | [Lecture](https://stefanocoretta.github.io/sqmf-slides/week-05/lecture/) | [Workshop](https://stefanocoretta.github.io/sqmf-slides/week-05/workshop/) |
 | 6 | | |
 | 7 | | |
 | 8 | | |
