@@ -225,6 +225,8 @@ The same applies to `Branching`: `Branching1` is `"Left"` because the sum coding
 
 The interaction term `Relation_type1:Branching1` is equivalent to `Relation_typeUnrelated:BranchingLeft`.
 
+Now use `ggpredict()` to plot the results.
+
 ### What does all this mean?
 
 Why don't you give it a go and work out what the results mean now that we have used sum coding?
@@ -237,5 +239,54 @@ According to the model, the overall probability of obtaining a correct response 
 
 
 
+
 ## Centring and sum coding
 
+Great stuff!
+
+Now, let's spice things up.
+
+Let's go back to our linear model of vowel duration, but this time:
+
+- We include as predictors: `c2_duration`, `vowel` and `speech_rate`,
+- but we also include a three-way interaction between those three.
+- We centre `c2_duration` and `speech_rate`,
+- and we sum code `vowel`.
+
+`dur_ita` already has `c2_duration_c` and `speech_rate_c` because we have created those column earlier.
+Now we need to change the contrasts for `vowel`.
+
+Go ahead and change the contrasts to `contr.sum`.
+
+```{r sum-vow}
+...
+```
+
+Now let's fit the model.
+
+The three-way interaction is included as `vowel * c2_duration_c * speech_rate_c`.
+This is equivalent to: 
+
+``` r
+vowel + c2_duration_c + speech_rate_c +
+vowel:c2_duration_c + vowel:speech_rate_c +
+vowel:c2_duration_c:speech_rate_c
+```
+
+These are 6 terms in the model... (and indeed you will get 6 estimates).
+
+Much easier to use the shortcut with `*` when including interactions.
+
+```{r vdur-lm-3}
+vdur_lm_3 <- lm(
+  v1_duration ~
+    vowel *
+    c2_duration_c *
+    speech_rate_c,
+  data = dur_ita
+)
+
+summary(vdur_lm_3)
+```
+
+Now, based on what you have learned about centring and sum coding, familiarise yourself with the model output, make some plots and report the model specification and results below.
