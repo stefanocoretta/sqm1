@@ -546,6 +546,16 @@
         "zip"
       ]
     },
+    "ggeffects": {
+      "Package": "ggeffects",
+      "Version": "1.1.4",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "bd0a304bf6293947cf5279472d9f5ded",
+      "Requirements": [
+        "insight"
+      ]
+    },
     "ggplot2": {
       "Package": "ggplot2",
       "Version": "3.3.6",
@@ -784,6 +794,14 @@
       "Source": "Repository",
       "Repository": "CRAN",
       "Hash": "6154ec2223172bce8162d4153cda21f7",
+      "Requirements": []
+    },
+    "insight": {
+      "Package": "insight",
+      "Version": "0.18.6",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "49a5e2067c566cb61060614883f999e7",
       "Requirements": []
     },
     "isoband": {

@@ -6,97 +6,236 @@ date: "`r Sys.Date()`"
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = here::here())
+library(tidyverse)
+library(ggeffects)
+library(broom.mixed)
 ```
 
-# Centring
+## Centring
 
----
+### Motivation
 
-- The estimated coefficients of the intercept and the effects of `vowel` are relative to when `c2_duration` is 0 ms.
+Let's rerun the linear model fitted to vowel duration with C2 duration and vowel as predictors (including the interaction).
 
-- This is not very meaningful, because consonants cannot be 0 ms long (they would simply not be there!).
+First read and filter the data.
 
-- We can get more meaningful coefficients by applying a type of transformation to `c2_duration` before we fit the model.
+```{r dur_ita}
+dur_ita <- read_csv("data/dur-ita-pol.csv") %>%
+  filter(language == "Italian") %>%
+  mutate(
+    vowel = factor(vowel, levels = c("a", "o", "u"))
+  )
+```
 
-- This type of transformation is called **centring**.
+Now run the linear model and check the output with `tidy()` (from the broom.mixed package).
 
----
+```{r vdur-lm}
+vdur_lm <- lm(v1_duration ~ c2_duration * vowel, data = dur_ita)
 
-**Centring simply consists of subtracting the mean of the variable from all the values.**
+tidy(vdur_lm)
+```
+
+The estimated coefficients of the intercept and the effects of `vowel` are relative to when `c2_duration` is 0 ms.
+
+This is not very meaningful, because consonants cannot be 0 ms long (they would simply not be there!).
+
+We can get more meaningful coefficients by applying a type of transformation to `c2_duration` before we fit the model.
+
+This type of transformation is called **centring**.
+
+### What is centring?
+
+**Centring simply consists of subtracting the mean of the variable from all the values in the variable.**
 
 ```{r dur-ita-cent}
 dur_ita <- dur_ita %>%
   mutate(
+    # Let's centre c2_duration
     c2_duration_c = c2_duration - mean(c2_duration)
   )
 
 dur_ita %>% select(vowel, v1_duration, c2_duration, c2_duration_c)
 ```
 
-???
-
 Since the mean of `c2_duration` in the data is `r mean(dur_ita$c2_duration)`, `c2_duration_c = 0` corresponds to `c2_duration = 90.33`.
 
 The values of `c2_duration_c` are the difference between the value of `c2_duration` and the mean.
 
----
+The following is the density plot of `c2_duration`.
 
 ```{r c2-dur}
 dur_ita %>%
   ggplot(aes(c2_duration)) + geom_density()
 ```
 
-???
-
-This is the density plot of `c2_duration`.
-
----
+Now let's plot the density of `c2_duration_c`.
 
 ```{r c2-dur-c}
 dur_ita %>%
   ggplot(aes(c2_duration_c)) + geom_density()
 ```
 
-???
 
-Here we plot `c2_duration_c`.
+You can notice that the shape of the density is the same as before, but now the values on the *x*-axis are different.
 
-You can notice that the shape of the density is the same as before, but now the *x*-axis is different.
+### Linear model with centred C2 duration
 
----
+Let's fit the model again, but now using `c2_duration_c`.
 
 ```{r vdur-lm-2-c}
-vdur_lm_2_c <- lm(v2_duration ~ c2_duration_c * vowel, data = dur_ita)
+vdur_lm_c <- lm(v1_duration ~ c2_duration_c * vowel, data = dur_ita)
 
 tidy(vdur_lm_2_c)
 ```
 
-???
-
-Let's fit the model again, but now using `c2_duration_c`.
-
-Now the estimates of the intercept and of vowel = /o/ and vowel = /u/ are interpreted as the estimates when `c2_duration_c` is 0, meaning when `c2_duration` is at its mean, i.e. `r mean(dur_ita$c2_duration)`.
-
----
+Now the estimates of the intercept and of vowel = /o/ and vowel = /u/ are interpreted as the effects of vowel = /o/ and vowel = /u/ when `c2_duration_c` is 0, meaning when `c2_duration` is at its mean, i.e. `r mean(dur_ita$c2_duration)`.
 
 ```{r vdur-lm-2-c-pred-plot}
-ggpredict(vdur_lm_2_c, terms = c("c2_duration_c", "vowel")) %>% plot()
+ggpredict(vdur_lm_c, terms = c("c2_duration_c", "vowel")) %>% plot()
 ```
-
-???
 
 The overall results are the same as in the model without centring.
 
 What differs is just that the values of `c2_duration_c` now indicate the difference from the mean.
 
+(You can compare this plot with the same plot obtained with `vdur_lm`; the scale of the *x*-axis is different but the lines and confidence intervals are identical).
+
 Centring is used mostly to make the interpretation of the coefficient in a model more meaningful.
+This is helpful when reporting the estimated coefficients.
+
+### Report the model
+
+Give it a go and report the model specification and the results.
+The way you report this model is the same as with the model without centring, you just need to add that you centred C2 duration when describing the model specification.
 
 
----
+## Sum coding
 
-layout: false
-class: center middle inverse
+### Motivation
+
+We have seen that categorical predictors are coded as numbers according to the treatment contrast system (this is done automatically by R, so you don't have to do it yourself).
+
+When we fit a model with categorical predictors coded with treatment contrasts, the intercept of the model refers to the reference level of the categorical predictors and for the other levels of the categorical predictors you get an estimate (which is the difference between that level and the intercept).
+
+For example, let's refit the model from the shallow morphological parsing data.
+
+```{r shallow}
+# You have already downloaded the shallow data for the tutorial in Week 5, so you can just read it from the `data/` folder.
+shallow <- read_csv("data/shallow.csv") %>%
+  filter(Relation_type != "NonConstituent") %>%
+  mutate(
+    Group = factor(Group, levels = c("L1", "L2")),
+    Relation_type = factor(Relation_type, levels = c("Unrelated", "Constituent", "NonConstituent")),
+    Branching = factor(Branching, levels = c("Left", "Right")),
+    accuracy = factor(accuracy, levels = c("incorrect", "correct"))
+  ) %>%
+  droplevels()
+
+shallow
+```
+
+```{r shallow-lm}
+shallow_lm <- glm(
+  accuracy ~ Relation_type + Branching + Relation_type:Branching,
+  data = shallow, family = binomial()
+)
+
+tidy(shallow_lm)
+```
+The intercept and coefficients are all relative to a particular level of `Relation_type` or `Branching`.
+
+But what if we wanted to know the overall average probability of obtaining a correct response and what each level of `Relation_type` or `Branching` do to that probability?
+
+We can use a different way of coding categorical predictors called *sum coding*.
+
+### What is sum coding?
+
+**Sum coding sets the intercept of the model to the grand mean and the estimated effects are relative to the grand mean**
+
+Let me show how that works in theory.
+
+Let's take `Relation_type`. The default coding system is treatment contrasts:
+
+|             | Relation_type |
+| ----------- | ------------: |
+| Unrelated   | 0             |
+| Constituent | 1             |
+
+With sum coding, we have:
+
+|             | Relation_type |
+| ----------- | ------------: |
+| Unrelated   | 1             |
+| Constituent | -1            |
+
+What this does is that now `Relation_type = 0` corresponds to the mean across `"Unrelated"` and `"Constituent"` (think of it this way `mean(1, -1) = 0`).
+
+### Linear model with sum coded predictor
+
+Now let's sum code both `Relation_type` and `Branching`.
+
+You can achieve that with the `contrasts()` function, like so:
+
+```{r sum-rel}
+contrasts(shallow$Relation_type) <- "contr.sum"
+```
+
+- The `$` allows you to access a column inside a data frame.
+- The `contrasts()` function modifies the contrasts of the column specified as an argument (here `shallow$Relation_type`).
+- You can check that this is the case by clicking on the blue button with an arrow next to the data frame name in the Environment tab (top-right panel in RStudio). Beneath `Relation_type` you will see `attr(*, "contrasts")= chr "contr.sum"`.
+
+Now do the same for `Branching`
+
+```{r sum-branch}
+...
+```
+
+Finally, we can fit the model with our predictors coded with sum coding.
+
+```{r shallow-lm-sum}
+shallow_lm_sum <- glm(
+  accuracy ~ Relation_type + Branching + Relation_type:Branching,
+  data = shallow, family = binomial()
+)
+
+summary(shallow_lm_sum)
+```
+
+Ok, not things are a bit more confusing: the estimates for `Relation_type` and `Branching` are `Relation_type1` and `Branching1` respectively.
+What does `1` mean?
+
+Well, look again at how sum coding works:
+
+|             | Relation_type |
+| ----------- | ------------: |
+| Unrelated   | 1             |
+| Constituent | -1            |
+
+For `Relation_type`, `1` is `"Unrelated"`.
+
+So now the coefficient `Relation_type1` is the difference between the intercept (i.e. the overall mean log-odds of obtaining a correct response) and the log-odds of obtaining a correct response when relation type is **unrelated**.
+
+The same applies to `Branching`: `Branching1` is `"Left"` because the sum coding of `Branching` is:
+
+|       | Branching |
+| ------| --------: |
+| Left  | 1         |
+| Right | -1        |
+
+The interaction term `Relation_type1:Branching1` is equivalent to `Relation_typeUnrelated:BranchingLeft`.
+
+### What does all this mean?
+
+Why don't you give it a go and work out what the results mean now that we have used sum coding?
+Write here a report of the model (I gave you a head start and already included the part on model specification).
+
+We fitted a linear model with a Bernoulli distribution (aka logistic/binomial regression) to accuracy, with relation type (unrelated vs constituent) and branching (left vs right) as predictors (both predictors where sum coded using `contr.sum` in R).
+An interaction between relation type and branching was also included.
+
+According to the model, the overall probability of obtaining a correct response is ...
 
 
 
+## Centring and sum coding
 
