@@ -206,5 +206,10 @@ download.file(
 
 load(here("data-raw/assessments/ft3/dativeSimplified.rda"))
 
+dativeSimplified <- dativeSimplified %>%
+  mutate(
+    LengthOfTheme = exp(LengthOfTheme)
+  )
+
 write_csv(dativeSimplified, here("data-raw/assessments/ft3/dativeSimplified.csv"))
 ```
