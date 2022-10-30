@@ -195,3 +195,16 @@ load(here("data-raw/assessments/ft2/english.rda"))
 
 write_csv(english, here("data-raw/assessments/ft2/english.csv"))
 ```
+
+### FT3: Data analysis
+
+```{r}
+download.file(
+  "https://github.com/cran/languageR/raw/master/data/dativeSimplified.rda",
+  here("data-raw/assessments/ft3/dativeSimplified.rda")
+)
+
+load(here("data-raw/assessments/ft3/dativeSimplified.rda"))
+
+write_csv(dativeSimplified, here("data-raw/assessments/ft3/dativeSimplified.csv"))
+```
