@@ -200,16 +200,14 @@ write_csv(english, here("data-raw/assessments/ft2/english.csv"))
 
 ```{r}
 download.file(
-  "https://github.com/cran/languageR/raw/master/data/dativeSimplified.rda",
-  here("data-raw/assessments/ft3/dativeSimplified.rda")
+  "https://github.com/cran/languageR/raw/master/data/dative.rda",
+  here("data-raw/assessments/ft3/dative.rda")
 )
 
-load(here("data-raw/assessments/ft3/dativeSimplified.rda"))
+load(here("data-raw/assessments/ft3/dative.rda"))
 
-dativeSimplified <- dativeSimplified %>%
-  mutate(
-    LengthOfTheme = exp(LengthOfTheme)
-  )
+dative <- dative %>%
+  select(RealizationRec = RealizationOfRecipient, Verb, AnimacyOfRec, AnimacyOfTheme, LengthOfTheme)
 
-write_csv(dativeSimplified, here("data-raw/assessments/ft3/dativeSimplified.csv"))
+write_csv(dative, here("data-raw/assessments/ft3/dative.csv"))
 ```
