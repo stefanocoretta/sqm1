@@ -83,15 +83,15 @@ You can notice that the shape of the density is the same as before, but now the 
 
 Let's fit the model again, but now using `c2_duration_c`.
 
-```{r vdur-lm-2-c}
+```{r vdur-lm-c}
 vdur_lm_c <- lm(v1_duration ~ c2_duration_c * vowel, data = dur_ita)
 
-tidy(vdur_lm_2_c)
+tidy(vdur_lm_c)
 ```
 
 Now the estimates of the intercept and of vowel = /o/ and vowel = /u/ are interpreted as the effects of vowel = /o/ and vowel = /u/ when `c2_duration_c` is 0, meaning when `c2_duration` is at its mean, i.e. `r mean(dur_ita$c2_duration)`.
 
-```{r vdur-lm-2-c-pred-plot}
+```{r vdur-lm-c-pred-plot}
 ggpredict(vdur_lm_c, terms = c("c2_duration_c", "vowel")) %>% plot()
 ```
 
