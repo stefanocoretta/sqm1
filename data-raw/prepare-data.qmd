@@ -10,6 +10,7 @@ editor: visual
 ```{r pkgs}
 library(here)
 library(tidyverse)
+library(faux)
 ```
 
 ## Glottolog data
@@ -210,4 +211,15 @@ dative <- dative %>%
   select(RealizationRec = RealizationOfRecipient, Verb, AnimacyOfRec, AnimacyOfTheme, LengthOfTheme)
 
 write_csv(dative, here("data-raw/assessments/ft3/dative.csv"))
+```
+
+## Summative assessment
+
+```{r}
+load(here("data/dur_ita_pol.rda"))
+
+data_e1_1 <- dur_ita_pol %>%
+  select(
+    speaker, f0, 
+  )
 ```
