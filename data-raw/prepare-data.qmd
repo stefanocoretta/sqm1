@@ -220,6 +220,48 @@ load(here("data/dur_ita_pol.rda"))
 
 data_e1_1 <- dur_ita_pol %>%
   select(
-    speaker, f0, 
+    speaker, f0_midpoint = f0, speech_rate, vowel, condition = c2_phonation, group = c2_place
   )
+
+write_csv(data_e1_1, here("data-raw/assessments/s1/data_e1_1.csv"))
+
+n <- 400
+language <- rep(c("Tagalog", "Maori"), each = n/2)
+environment <- rep(c("quiet", "noisy"), length.out = n)
+age <- rep(c("old", "old", "young", "young"), length.out = n)
+
+RT_ms <- exp(rnorm(n, 5, 1) +
+  (as.numeric(as.factor(language)) - 1) * rnorm(n, 0.5, 2) +
+  (as.numeric(as.factor(environment)) - 1) * rnorm(n, -0.3, 1) +
+  (as.numeric(as.factor(age)) - 1) * rnorm(n, 2, 1))
+
+data_e1_2 <- tibble(
+  RT_ms, language, environment, age
+) %>%
+  filter(RT_ms < 2000)
+
+write_csv(data_e1_2, here("data-raw/assessments/s1/data_e1_2.csv"))
+
+n <- 400
+trial <- rep(1:12, length.out = n)
+subject <- rep(1:9, each = 48)[1:400]
+condition <- rep(rep(c("easy", "difficult"), each = 12), length.out = n)
+priming <- rep(rep(c("high_freq", "low_freq"), each = 24), length.out = n)
+
+accuracy <- sample(
+  c("correct", "incorrect"), 400, replace = TRUE,
+  prob = for (i in 1:400) {
+      if (condition[i] == "easy") {
+      c(0.8, 0.2)
+    } else {
+      c(0.1, 0.9)
+    }
+  }
+)
+
+data_e1_3 <- tibble(
+  subject, trial, condition, priming, accuracy
+)
+
+write_csv(data_e1_3, here("data-raw/assessments/s1/data_e1_3.csv"))
 ```
