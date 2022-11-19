@@ -1,3 +1,11 @@
+# sqmf 1.5.0
+
+* Added data for FT3 and S1.
+
+* Fixed `03a_transform` tutorial.
+
+
+
 # sqmf 1.4.0
 
 * Add data for FT2.
