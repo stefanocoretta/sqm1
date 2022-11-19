@@ -319,3 +319,25 @@ data_e7 <- tibble(
 
 write_csv(data_e7, here("data-raw/assessments/s1/data_e7.csv"))
 ```
+
+```{r}
+n <- 100
+subjs <- 50
+
+setting <- rep(c("urban_set", "natural_set"), length.out = n * subjs)
+sound <- rep(c("urban_sound", "urban_sound", "natural_sound", "natural_sound"), length.out = n * subjs)
+
+speech_rate <- exp(
+  rnorm(n * subjs, 1.5, 0.2) -
+  (as.numeric(as.factor(setting)) - 1) * rnorm(n * subjs, 0.2, 0.05) -
+  (as.numeric(as.factor(sound)) - 1) * rnorm(n * subjs, 0, 0.05) -
+  (as.numeric(as.factor(setting)) - 1) * (as.numeric(as.factor(sound)) - 1) * rnorm(n * subjs, 0.4, 0.05)
+)
+
+data_e8 <- tibble(
+  speech_rate, setting, sound,
+  subject = rep(1:50, each = 100)
+)
+
+write_csv(data_e8, here("data-raw/assessments/s1/data_e8.csv"))
+```
