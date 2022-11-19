@@ -288,3 +288,34 @@ data_e2_2 <- dur_ita_pol %>%
 
 write_csv(data_e2_2, here("data-raw/assessments/s1/data_e2_2.csv"))
 ```
+
+```{r}
+n <- 600
+condition <- rep(c("kiki", "baba"), length.out = n)
+subject <- rep(1:30, each = 20)
+
+response <- NULL
+RT <- NULL
+
+for (i in 1:n) {
+  if (condition[i] == "kiki") {
+    response <- c(response, sample(
+      c("small", "big"), 1,
+      prob = c(0.75, 0.2)
+    ))
+    RT <- c(RT, round(exp(rnorm(1, 6, 0.2))))
+  } else {
+    response <- c(response, sample(
+      c("small", "big"), 1,
+      prob = c(0.1, 0.8)
+    ))
+    RT <- c(RT, round(exp(rnorm(1, 7, 0.3))))
+  }
+}
+
+data_e7 <- tibble(
+  subject, response, condition, RT
+)
+
+write_csv(data_e7, here("data-raw/assessments/s1/data_e7.csv"))
+```
