@@ -221,7 +221,8 @@ load(here("data/dur_ita_pol.rda"))
 data_e1_1 <- dur_ita_pol %>%
   select(
     speaker, f0_midpoint = f0, speech_rate, vowel, condition = c2_phonation, group = c2_place
-  )
+  ) %>%
+  drop_na()
 
 write_csv(data_e1_1, here("data-raw/assessments/s1/data_e1_1.csv"))
 
@@ -264,4 +265,8 @@ data_e1_3 <- tibble(
 )
 
 write_csv(data_e1_3, here("data-raw/assessments/s1/data_e1_3.csv"))
+```
+
+```{r}
+
 ```
