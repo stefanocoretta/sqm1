@@ -271,7 +271,7 @@ shallow %>%
 
 To remove one or more columns, prefix the column name with `-` (minus). All the other columns will be kept.
 
-```{r deselect, exercise=TRUE, exercise.setup="mud-count-setup"}
+```{r deselect, exercise=TRUE}
 shallow %>%
   select(-List, -RT)
 ```
