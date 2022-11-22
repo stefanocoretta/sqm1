@@ -26,8 +26,8 @@ Here you can find the slides of lectures and workshops.
 | 6 | | |
 | 7 | [Lecture](https://stefanocoretta.github.io/sqmf-slides/week-07/lecture/) | [Workshop](https://stefanocoretta.github.io/sqmf-slides/week-07/workshop/) |
 | 8 | [Lecture](https://stefanocoretta.github.io/sqmf-slides/week-08/lecture/) | [Workshop](https://stefanocoretta.github.io/sqmf-slides/week-08/workshop/) |
-| 👉 9 | [Lecture](https://stefanocoretta.github.io/sqmf-slides/week-09/lecture/) | [Workshop](https://stefanocoretta.github.io/sqmf-slides/week-09/workshop/) |
-| 10 | |  |
+| 9 | [Lecture](https://stefanocoretta.github.io/sqmf-slides/week-09/lecture/) | [Workshop](https://stefanocoretta.github.io/sqmf-slides/week-09/workshop/) |
+| 👉 10 | [Lecture](https://stefanocoretta.github.io/sqmf-slides/week-10/lecture/) |  |
 
 You can find the R tutorials for Week 1-3 through the Tutorial tab in RStudio and the R tutorials for Week 4 on in this [shared folder](https://drive.google.com/drive/folders/1h5YAoabIk0vhBGpcU8cQdUmNZYNPuh3z?usp=sharing).
 
